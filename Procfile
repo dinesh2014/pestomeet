@@ -1,1 +1,1 @@
-web: tsc && node --es-module-specifier-resolution=node --unhandled-rejections=strict ./dist/server.js
+web: npm start
