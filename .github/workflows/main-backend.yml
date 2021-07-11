@@ -7,10 +7,8 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
+    runs-on: ubuntu-latest 
+    
     steps:
       - uses: actions/checkout@v2
       - uses: AkhileshNS/heroku-deploy@v3.12.12 # This is the action
@@ -18,4 +16,3 @@ jobs:
           heroku_api_key: "d32c781d-2fba-438e-98f6-99c7dd4fc601"
           heroku_app_name: "pestomeet-backend" #Must be unique in Heroku
           heroku_email: "ninja4epsilon@gmail.com"
-      - run: npm install
