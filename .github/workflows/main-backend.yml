@@ -16,7 +16,7 @@ jobs:
       - uses: AkhileshNS/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: "d32c781d-2fba-438e-98f6-99c7dd4fc601"
-          heroku_app_name: "pestomeet" #Must be unique in Heroku
+          heroku_app_name: "pestomeet-backend" #Must be unique in Heroku
           heroku_email: "ninja4epsilon@gmail.com"
           appdir: "backend"
       - run: npm install
