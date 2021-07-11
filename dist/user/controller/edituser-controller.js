@@ -1,0 +1,25 @@
+import EditUser from '../schema/user-schema';
+import { validationResult } from 'express-validator';
+import { message } from '../../utils/response-format';
+const ApprovalController = (request, response) => {
+    let { name, email, phone, role, experience, approval } = request.body;
+    let id = request.params.id;
+    const errors = validationResult(request);
+    if (!errors.isEmpty()) {
+        return response.json(message("Validation Error", errors.array(), false));
+    }
+    let editUser = { "id": id, "name": name.toLowerCase(), "email": email.toLowerCase(), "phone": phone, "role": role.toLowerCase(), "experience": experience, "approval": approval };
+    const doc = EditUser.findOneAndUpdate({ "id": id }, { $set: editUser }, { useFindAndModify: false, new: true }, (errors, doc) => {
+        if (errors) {
+            response.json(message("Update Failed ! Please Try Again", null, false));
+        }
+        else if (!doc) {
+            response.json(message("Couldn't Find the user", null, false));
+        }
+        else {
+            response.json(message("Status Updated Successfully", null, true));
+        }
+    });
+};
+export default ApprovalController;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZWRpdHVzZXItY29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3VzZXIvY29udHJvbGxlci9lZGl0dXNlci1jb250cm9sbGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sUUFBUSxNQUFNLHVCQUF1QixDQUFBO0FBQzVDLE9BQU8sRUFBRSxnQkFBZ0IsRUFBRSxNQUFNLG1CQUFtQixDQUFDO0FBQ3JELE9BQU8sRUFBQyxPQUFPLEVBQUMsTUFBTSw2QkFBNkIsQ0FBQTtBQUduRCxNQUFNLGtCQUFrQixHQUFFLENBQUMsT0FBVyxFQUFDLFFBQVksRUFBQyxFQUFFO0lBQ2xELElBQUksRUFBQyxJQUFJLEVBQUMsS0FBSyxFQUFDLEtBQUssRUFBQyxJQUFJLEVBQUMsVUFBVSxFQUFDLFFBQVEsRUFBQyxHQUFFLE9BQU8sQ0FBQyxJQUFJLENBQUM7SUFDOUQsSUFBSSxFQUFFLEdBQUcsT0FBTyxDQUFDLE1BQU0sQ0FBQyxFQUFFLENBQUM7SUFDM0IsTUFBTSxNQUFNLEdBQUcsZ0JBQWdCLENBQUMsT0FBTyxDQUFDLENBQUM7SUFDekMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxPQUFPLEVBQUUsRUFBRTtRQUNyQixPQUFPLFFBQVEsQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLGtCQUFrQixFQUFFLE1BQU0sQ0FBQyxLQUFLLEVBQUUsRUFBQyxLQUFLLENBQUMsQ0FBQyxDQUFDO0tBQ3pFO0lBRUQsSUFBSSxRQUFRLEdBQUcsRUFBQyxJQUFJLEVBQUMsRUFBRSxFQUFDLE1BQU0sRUFBQyxJQUFJLENBQUMsV0FBVyxFQUFFLEVBQUMsT0FBTyxFQUFDLEtBQUssQ0FBQyxXQUFXLEVBQUUsRUFBQyxPQUFPLEVBQUMsS0FBSyxFQUFDLE1BQU0sRUFBQyxJQUFJLENBQUMsV0FBVyxFQUFFLEVBQUMsWUFBWSxFQUFDLFVBQVUsRUFBQyxVQUFVLEVBQUMsUUFBUSxFQUFDLENBQUE7SUFDbEssTUFBTSxHQUFHLEdBQUcsUUFBUSxDQUFDLGdCQUFnQixDQUFDLEVBQUMsSUFBSSxFQUFDLEVBQUUsRUFBQyxFQUFDLEVBQUMsSUFBSSxFQUFDLFFBQVEsRUFBQyxFQUFDLEVBQUMsZ0JBQWdCLEVBQUUsS0FBSyxFQUFFLEdBQUcsRUFBQyxJQUFJLEVBQUMsRUFBQyxDQUFDLE1BQVUsRUFBQyxHQUFPLEVBQUMsRUFBRTtRQUN0SCxJQUFJLE1BQU0sRUFBRTtZQUNSLFFBQVEsQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLGtDQUFrQyxFQUFDLElBQUksRUFBQyxLQUFLLENBQUMsQ0FBQyxDQUFBO1NBQ3hFO2FBQU0sSUFBRyxDQUFDLEdBQUcsRUFBQztZQUNYLFFBQVEsQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLHdCQUF3QixFQUFDLElBQUksRUFBQyxLQUFLLENBQUMsQ0FBQyxDQUFBO1NBQzlEO2FBQUs7WUFDRixRQUFRLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyw2QkFBNkIsRUFBQyxJQUFJLEVBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQTtTQUNsRTtJQUNMLENBQUMsQ0FBQyxDQUFBO0FBRU4sQ0FBQyxDQUFBO0FBRUQsZUFBZSxrQkFBa0IsQ0FBQyJ9

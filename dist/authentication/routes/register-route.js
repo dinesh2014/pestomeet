@@ -1,0 +1,7 @@
+import express from 'express';
+import { body } from 'express-validator';
+import registerController from '../controller/register-controller';
+const registerRouter = express.Router();
+registerRouter.post('/', body('email').isEmail(), body('phone').isNumeric(), registerController);
+export default registerRouter;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVnaXN0ZXItcm91dGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9hdXRoZW50aWNhdGlvbi9yb3V0ZXMvcmVnaXN0ZXItcm91dGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxPQUFPLE1BQU0sU0FBUyxDQUFBO0FBQzdCLE9BQU8sRUFBRSxJQUFJLEVBQU8sTUFBTSxtQkFBbUIsQ0FBQztBQUM5QyxPQUFPLGtCQUFrQixNQUFNLG1DQUFtQyxDQUFBO0FBRWxFLE1BQU0sY0FBYyxHQUFFLE9BQU8sQ0FBQyxNQUFNLEVBQUUsQ0FBQTtBQUd0QyxjQUFjLENBQUMsSUFBSSxDQUFDLEdBQUcsRUFBQyxJQUFJLENBQUMsT0FBTyxDQUFDLENBQUMsT0FBTyxFQUFFLEVBQy9DLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQyxTQUFTLEVBQUUsRUFBQyxrQkFBa0IsQ0FBQyxDQUFBO0FBRTdDLGVBQWUsY0FBYyxDQUFDIn0=
