@@ -11,7 +11,7 @@ const ApprovalController =(request:any,response:any)=>{
       return response.json(message("Validation Error", errors.array(),false));
     }
 
-    let editUser = {"id":id,"name":name.toLowerCase(),"email":email.toLowerCase(),"phone":phone,"role":role.toLowerCase(),"experience":experience,"approval":approval}
+    let editUser = {"id":id,"name":name.toLowerCase(),"email":email.toLowerCase(),"phone":phone,"role":role.toLowerCase(),"experience":experience,"approval":approval.toLowerCase()}
     const doc = EditUser.findOneAndUpdate({"id":id},{$set:editUser},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
         if (errors) {
             response.json(message("Update Failed ! Please Try Again",null,false))
