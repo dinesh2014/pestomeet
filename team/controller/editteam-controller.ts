@@ -12,14 +12,21 @@ const ApprovalController =(request:any,response:any)=>{
     }
 
     let editTeams = {"teamName":teamName.toLowerCase(),"teamType":teamType,"mentorId":mentorId,"mentorName":mentorName,"teamMembers":teamMembers}
-    const doc = editTeam.findOneAndUpdate({"teamId":teamId},{$set:editTeams},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
-        if (errors) {
+    editTeam.findOne({'teamName':teamName.toLowerCase()},(error:any,result:any)=>{
+        if(error){
             response.json(message("Update Failed ! Please Try Again",null,false))
-        }  else if(!doc){
-            response.json(message("Couldn't Find the Team",null,true))
-        }else{
-            response.json(message("Team Updated Successfully",null,true))
-        }
+         }else if(result){
+            response.json(message("Team Name Already Taken",null,false))
+         }else{
+             editTeam.findOneAndUpdate({"teamId":teamId},{$set:editTeams},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
+             if (errors) {
+                 response.json(message("Update Failed ! Please Try Again",null,false))
+             }else if(!doc){
+                 response.json(message("Couldn't Find the Team",null,true))
+                }else{
+                    response.json(message("Team Updated Successfully",null,true))
+                }
+             })}
     })
     
 }
