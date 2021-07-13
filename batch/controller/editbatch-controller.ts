@@ -12,21 +12,16 @@ const ApprovalController =(request:any,response:any)=>{
     }
 
     let editBatches = {"batchName":batchName.toLowerCase(),"batchType":batchType,"batchOwner":batchOwner,"batchMembers":batchMembers}
-    editBatch.findOne({'batchName':batchName.toLowerCase()},(error:any,result:any)=>{
-     if(error){
-        response.json(message("Update Failed ! Please Try Again",null,false))
-     }else if(result){
-        response.json(message("Batch Name Already Taken",null,false))
-     }else{
-        editBatch.findOneAndUpdate({"batchId":batchId},{$set:editBatches},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
-          if (errors) {
+    const doc = editBatch.findOneAndUpdate({"batchId":batchId},{$set:editBatches},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
+        if (errors) {
             response.json(message("Update Failed ! Please Try Again",null,false))
-          } else if(doc== null){
+        } else if(doc== null){
             response.json(message("Couldn't Find the Batch",null,true))
-          }else{
+        }else{
             response.json(message("Batch updated successfully",null,false))
-         }
-    })}
-    })}
+        }
+    })
+    
+}
 
 export default ApprovalController;
