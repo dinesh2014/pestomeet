@@ -4,7 +4,7 @@ import {message} from '../../utils/response-format'
 
 const ListteamController =(request:any,response:any)=>{
     const teamType = request.params.type;
-    listTeam.find({"teamType":teamType},(errors:any,result:any)=>{
+    listTeam.find({"teamType":teamType.toLowerCase()},(errors:any,result:any)=>{
         if (errors) {
             response.json(message("Error while reteriving team",errors,false))
         }else if(result.length==0){
