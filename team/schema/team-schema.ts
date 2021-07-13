@@ -15,7 +15,7 @@ interface ITeam{
 const teamSchema = new mongoose.Schema<ITeam>({
   teamId:{type:String , required:true} ,
   teamName:{type:String , required:true},
-  ew  :{type:String,required:true},
+  teamType:{type:String,required:true},
   mentorId:{type:String,require:true},
   mentorName: {type:String, required:true},
   teamMembers:{type:Object , required:true}
