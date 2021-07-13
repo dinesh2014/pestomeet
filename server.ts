@@ -47,6 +47,9 @@ app.use('/api/pesto/create/batch',createbatchRouter)
 app.use('/api/pesto/edit/batch',editbatchRouter)
 app.use('/api/pesto/delete/batch',deletebatchRouter)
 
+/*Resource Upload Routers*/
+app.use('/api/pesto/resource/upload',resourceuploadRouter)
+
 const serverListen = app.listen(process.env.PORT||5000,()=>{
   console.log('Server Started Successfully')
   })
