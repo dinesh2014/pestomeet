@@ -8,7 +8,6 @@ console.log("in router")
 
 editteamRouter.patch('/:id',check('teamName', 'teamName is required').not().isEmpty(),
 check('teamType').not().isEmpty(),
-check('mentorId').not().isEmpty(),
 check('mentorName').not().isEmpty(),
 check('teamMembers').not().isEmpty(),
 editteamController)
