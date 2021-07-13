@@ -5,14 +5,14 @@ import {message} from '../../utils/response-format'
 
 const ApprovalController =(request:any,response:any)=>{
     let {teamName,teamType,mentorId,mentorName,teamMembers}= request.body; 
-    let id = request.params.id;
+    let teamId = request.params.id;
     const errors = validationResult(request);
     if (!errors.isEmpty()) {
       return response.json(message("Validation Error", errors.array(),false));
     }
 
     let editTeams = {"teamName":teamName.toLowerCase(),"teamType":teamType,"mentorId":mentorId,"mentorName":mentorName,"teamMembers":teamMembers}
-    const doc = editTeam.findOneAndUpdate({"id":id},{$set:editTeams},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
+    const doc = editTeam.findOneAndUpdate({"teamId":teamId},{$set:editTeams},{useFindAndModify: false ,new:true},(errors:any,doc:any)=>{
         if (errors) {
             response.json(message("Update Failed ! Please Try Again",null,false))
         }  else if(!doc){
