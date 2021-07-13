@@ -15,7 +15,7 @@ const errors = validationResult(reqest);
     }
 
 const hash = bcrypt.hashSync(password,10);
-const newUser = new registerUser({"id":id,"name":name.toLowerCase(),"email":email.toLowerCase(),"phone":phone,"password":hash,"role":role.toLowerCase(),"experience":experience,"approval":approval})
+const newUser = new registerUser({"id":id,"name":name.toLowerCase(),"email":email.toLowerCase(),"phone":phone,"password":hash,"role":role.toLowerCase(),"experience":experience,"approval":approval.toLowerCase()})
 
 registerUser.findOne({$or:[{'email':email.toLowerCase()},{'phone':phone}]},(error:any,result:any)=>{
     if(error){

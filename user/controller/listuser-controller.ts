@@ -5,7 +5,7 @@ import {message} from '../../utils/response-format'
 const ListuserController =(request:any,response:any)=>{
     const status = request.params.status;
     const role = request.params.role;
-    listUser.find({"approval":status,"role":role},(errors:any,result:any)=>{
+    listUser.find({"approval":status.toLowerCase(),"role":role.toLowerCase()},(errors:any,result:any)=>{
         if (errors) {
             response.json(message("Error while reteriving user",errors,false))
         }else if(result.length==0){
