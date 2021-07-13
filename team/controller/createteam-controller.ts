@@ -7,7 +7,7 @@ var teamId = uuidv4();
 const RegisterteamController = (reqest:any,response:any)=>{
 
 const {teamName,teamType,mentorId,mentorName,teamMembers} = reqest.body;
-let newTeam = new registerTeam({"teamId":teamId,"teamName":teamName.toLowerCase(),"teamType":teamType,"mentorId":mentorId,"mentorName":mentorName,"teamMembers":teamMembers})
+let newTeam = new registerTeam({"teamId":teamId,"teamName":teamName.toLowerCase(),"teamType":teamType.toLowerCase(),"mentorId":mentorId,"mentorName":mentorName,"teamMembers":teamMembers})
 
 registerTeam.findOne({'teamName':teamName.toLowerCase()},(error:any,result:any)=>{
     if(error){
