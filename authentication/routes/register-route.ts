@@ -6,6 +6,12 @@ const registerRouter= express.Router()
 
 
 registerRouter.post('/',body('email').isEmail(),
-body('phone').isNumeric(),registerController)
+body('phone').isNumeric(),
+check('password').not().isEmpty(),
+check('role').not().isEmpty(),
+check('experience').not().isEmpty(),
+check('approval').not().isEmpty(),
+check('name').not().isEmpty(),
+registerController)
 
 export default registerRouter;

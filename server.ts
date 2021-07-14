@@ -17,6 +17,7 @@ import listbatchRouter from './batch/routes/listbatch-route'
 import createbatchRouter from './batch/routes/createbatch-route'
 import editbatchRouter from './batch/routes/editbatch-route'
 import deletebatchRouter from './batch/routes/deletebatch-route'
+import avataruploadRouter from './user/routes/avatar-route'
 
 
 const app = express();
@@ -48,7 +49,7 @@ app.use('/api/pesto/edit/batch',editbatchRouter)
 app.use('/api/pesto/delete/batch',deletebatchRouter)
 
 /*Resource Upload Routers*/
-//app.use('/api/pesto/resource/upload',resourceuploadRouter)
+app.use('/api/pesto/avatar/upload',avataruploadRouter)
 
 const serverListen = app.listen(process.env.PORT||5000,()=>{
   console.log('Server Started Successfully')

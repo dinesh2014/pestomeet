@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 interface IUser{
   id:string,
   name: string;
+  avatar:string;
   email: string;
   phone: Number;
   password:string;

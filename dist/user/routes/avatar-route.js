@@ -1,0 +1,6 @@
+import express from 'express';
+import avatarController from '../controller/avatar-controller';
+const avatarRouter = express.Router();
+avatarRouter.post('/', avatarController);
+export default avatarRouter;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXZhdGFyLXJvdXRlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vdXNlci9yb3V0ZXMvYXZhdGFyLXJvdXRlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sT0FBTyxNQUFNLFNBQVMsQ0FBQTtBQU03QixPQUFPLGdCQUFnQixNQUFNLGlDQUFpQyxDQUFBO0FBRTlELE1BQU0sWUFBWSxHQUFFLE9BQU8sQ0FBQyxNQUFNLEVBQUUsQ0FBQTtBQUdwQyxZQUFZLENBQUMsSUFBSSxDQUFDLEdBQUcsRUFBQyxnQkFBZ0IsQ0FBQyxDQUFBO0FBRXZDLGVBQWUsWUFBWSxDQUFDIn0=
