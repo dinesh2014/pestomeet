@@ -1,0 +1,8 @@
+import express from 'express';
+import { check } from 'express-validator';
+import editbatchController from '../controller/editbatch-controller';
+const editbatchRouter = express.Router();
+console.log("in router");
+editbatchRouter.patch('/:id', check('batchName', 'teamName is required').not().isEmpty(), check('batchOwner').not().isEmpty(), check('batchMembers').not().isEmpty(), editbatchController);
+export default editbatchRouter;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZWRpdGJhdGNoLXJvdXRlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vYmF0Y2gvcm91dGVzL2VkaXRiYXRjaC1yb3V0ZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLE9BQU8sTUFBTSxTQUFTLENBQUE7QUFDN0IsT0FBTyxFQUFPLEtBQUssRUFBQyxNQUFNLG1CQUFtQixDQUFDO0FBQzlDLE9BQU8sbUJBQW1CLE1BQU0sb0NBQW9DLENBQUE7QUFFcEUsTUFBTSxlQUFlLEdBQUUsT0FBTyxDQUFDLE1BQU0sRUFBRSxDQUFBO0FBRXZDLE9BQU8sQ0FBQyxHQUFHLENBQUMsV0FBVyxDQUFDLENBQUE7QUFFeEIsZUFBZSxDQUFDLEtBQUssQ0FBQyxNQUFNLEVBQUMsS0FBSyxDQUFDLFdBQVcsRUFBRSxzQkFBc0IsQ0FBQyxDQUFDLEdBQUcsRUFBRSxDQUFDLE9BQU8sRUFBRSxFQUN2RixLQUFLLENBQUMsWUFBWSxDQUFDLENBQUMsR0FBRyxFQUFFLENBQUMsT0FBTyxFQUFFLEVBQ25DLEtBQUssQ0FBQyxjQUFjLENBQUMsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxPQUFPLEVBQUUsRUFDckMsbUJBQW1CLENBQUMsQ0FBQTtBQUVwQixlQUFlLGVBQWUsQ0FBQyJ9

@@ -1,0 +1,36 @@
+import registerUser from '../../user/schema/user-schema';
+import bcrypt from 'bcrypt';
+import { v4 as uuidv4 } from 'uuid';
+import { validationResult } from 'express-validator';
+import { message } from '../../utils/response-format';
+const id = uuidv4();
+const RegisterController = (reqest, response) => {
+    const { name, email, phone, password, role, experience, approval } = reqest.body;
+    const errors = validationResult(reqest);
+    if (!errors.isEmpty()) {
+        return response.json(message("Validation Error", errors.array(), false));
+    }
+    const hash = bcrypt.hashSync(password, 10);
+    const newUser = new registerUser({ "id": id, "name": name.toLowerCase(), "email": email.toLowerCase(), "phone": phone, "password": hash, "role": role.toLowerCase(), "experience": experience, "approval": approval.toLowerCase() });
+    registerUser.findOne({ $or: [{ 'email': email.toLowerCase() }, { 'phone': phone }] }, (error, result) => {
+        if (error) {
+            response.json(message("Error Happened while registering User, Try Again !", null, false));
+        }
+        else if (!result) {
+            newUser.save((error, result) => {
+                if (error) {
+                    response.json({ message: error });
+                }
+                else {
+                    response.json(message("User Registered Successfully", null, true));
+                }
+            });
+        }
+        else {
+            console.log(result);
+            response.json(message("User Already Available", null, false));
+        }
+    });
+};
+export default RegisterController;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVnaXN0ZXItY29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2F1dGhlbnRpY2F0aW9uL2NvbnRyb2xsZXIvcmVnaXN0ZXItY29udHJvbGxlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLFlBQVksTUFBTSwrQkFBK0IsQ0FBQTtBQUN4RCxPQUFPLE1BQU0sTUFBTSxRQUFRLENBQUE7QUFDM0IsT0FBTyxFQUFFLEVBQUUsSUFBSSxNQUFNLEVBQUUsTUFBTSxNQUFNLENBQUM7QUFDcEMsT0FBTyxFQUFDLGdCQUFnQixFQUFFLE1BQU0sbUJBQW1CLENBQUM7QUFDcEQsT0FBTyxFQUFDLE9BQU8sRUFBQyxNQUFNLDZCQUE2QixDQUFBO0FBR25ELE1BQU0sRUFBRSxHQUFHLE1BQU0sRUFBRSxDQUFDO0FBQ3BCLE1BQU0sa0JBQWtCLEdBQUcsQ0FBQyxNQUFVLEVBQUMsUUFBWSxFQUFDLEVBQUU7SUFFdEQsTUFBTSxFQUFDLElBQUksRUFBQyxLQUFLLEVBQUMsS0FBSyxFQUFDLFFBQVEsRUFBQyxJQUFJLEVBQUMsVUFBVSxFQUFDLFFBQVEsRUFBQyxHQUFHLE1BQU0sQ0FBQyxJQUFJLENBQUM7SUFDekUsTUFBTSxNQUFNLEdBQUcsZ0JBQWdCLENBQUMsTUFBTSxDQUFDLENBQUM7SUFDcEMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxPQUFPLEVBQUUsRUFBRTtRQUNyQixPQUFPLFFBQVEsQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLGtCQUFrQixFQUFDLE1BQU0sQ0FBQyxLQUFLLEVBQUUsRUFBQyxLQUFLLENBQUMsQ0FBQyxDQUFDO0tBQ3hFO0lBRUwsTUFBTSxJQUFJLEdBQUcsTUFBTSxDQUFDLFFBQVEsQ0FBQyxRQUFRLEVBQUMsRUFBRSxDQUFDLENBQUM7SUFDMUMsTUFBTSxPQUFPLEdBQUcsSUFBSSxZQUFZLENBQUMsRUFBQyxJQUFJLEVBQUMsRUFBRSxFQUFDLE1BQU0sRUFBQyxJQUFJLENBQUMsV0FBVyxFQUFFLEVBQUMsT0FBTyxFQUFDLEtBQUssQ0FBQyxXQUFXLEVBQUUsRUFBQyxPQUFPLEVBQUMsS0FBSyxFQUFDLFVBQVUsRUFBQyxJQUFJLEVBQUMsTUFBTSxFQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsRUFBQyxZQUFZLEVBQUMsVUFBVSxFQUFDLFVBQVUsRUFBQyxRQUFRLENBQUMsV0FBVyxFQUFFLEVBQUMsQ0FBQyxDQUFBO0lBRW5OLFlBQVksQ0FBQyxPQUFPLENBQUMsRUFBQyxHQUFHLEVBQUMsQ0FBQyxFQUFDLE9BQU8sRUFBQyxLQUFLLENBQUMsV0FBVyxFQUFFLEVBQUMsRUFBQyxFQUFDLE9BQU8sRUFBQyxLQUFLLEVBQUMsQ0FBQyxFQUFDLEVBQUMsQ0FBQyxLQUFTLEVBQUMsTUFBVSxFQUFDLEVBQUU7UUFDL0YsSUFBRyxLQUFLLEVBQUM7WUFDUCxRQUFRLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxvREFBb0QsRUFBQyxJQUFJLEVBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQTtTQUN4RjthQUFLLElBQUcsQ0FBQyxNQUFNLEVBQUM7WUFDYixPQUFPLENBQUMsSUFBSSxDQUFDLENBQUMsS0FBUyxFQUFDLE1BQVUsRUFBQyxFQUFFO2dCQUN6QixJQUFJLEtBQUssRUFBQztvQkFBQyxRQUFRLENBQUMsSUFBSSxDQUFDLEVBQUMsT0FBTyxFQUFDLEtBQUssRUFBQyxDQUFDLENBQUM7aUJBQUU7cUJBQ3hDO29CQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLDhCQUE4QixFQUFDLElBQUksRUFBQyxJQUFJLENBQUMsQ0FBQyxDQUFBO2lCQUFDO1lBQUEsQ0FBQyxDQUFDLENBQUE7U0FDdkY7YUFBSTtZQUNELE9BQU8sQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLENBQUE7WUFDbkIsUUFBUSxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsd0JBQXdCLEVBQUMsSUFBSSxFQUFDLEtBQUssQ0FBQyxDQUFDLENBQUE7U0FDNUQ7SUFDTCxDQUFDLENBQUMsQ0FBQTtBQUVKLENBQUMsQ0FBQTtBQUVELGVBQWUsa0JBQWtCLENBQUEifQ==

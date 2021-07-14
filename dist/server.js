@@ -1,0 +1,47 @@
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import registerRouter from './authentication/routes/register-route';
+import loginRouter from './authentication/routes/login-route';
+import edituserRouter from './user/routes/edituser-route';
+import listuserRouter from './user/routes/listuser-route';
+import deleteuserRouter from './user/routes/deleteuser-route';
+import createteamRouter from './team/routes/createteam-route';
+import editteamRouter from './team/routes/editteam-route';
+import listteamRouter from './team/routes/listteam-route';
+import deleteteamRouter from './team/routes/deleteteam-route';
+import listbatchRouter from './batch/routes/listbatch-route';
+import createbatchRouter from './batch/routes/createbatch-route';
+import editbatchRouter from './batch/routes/editbatch-route';
+import deletebatchRouter from './batch/routes/deletebatch-route';
+import avataruploadRouter from './user/routes/avatar-route';
+const app = express();
+app.use(express.json());
+app.use(cors({ origin: '*' }));
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_HOST + "/" + process.env.DB_NAME;
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("connected to DB."))
+    .catch(error => console.log(error));
+app.use('/api/pesto/register', registerRouter);
+app.use('/api/pesto/login', loginRouter);
+//app.use(authMiddleware)
+/*Admin Screen Routers */
+app.use('/api/pesto/list/user', listuserRouter);
+app.use('/api/pesto/edit/user', edituserRouter);
+app.use('/api/pesto/delete/user', deleteuserRouter);
+app.use('/api/pesto/list/team', listteamRouter);
+app.use('/api/pesto/create/team', createteamRouter);
+app.use('/api/pesto/edit/team', editteamRouter);
+app.use('/api/pesto/delete/team', deleteteamRouter);
+app.use('/api/pesto/list/batch', listbatchRouter);
+app.use('/api/pesto/create/batch', createbatchRouter);
+app.use('/api/pesto/edit/batch', editbatchRouter);
+app.use('/api/pesto/delete/batch', deletebatchRouter);
+/*Resource Upload Routers*/
+app.use('/api/pesto/avatar/upload', avataruploadRouter);
+const serverListen = app.listen(process.env.PORT || 5000, () => {
+    console.log('Server Started Successfully');
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2VydmVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc2VydmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sTUFBTSxNQUFLLFFBQVEsQ0FBQTtBQUMxQixNQUFNLENBQUMsTUFBTSxFQUFFLENBQUE7QUFDZixPQUFPLE9BQU8sTUFBTSxTQUFTLENBQUE7QUFFN0IsT0FBTyxJQUFJLE1BQU0sTUFBTSxDQUFBO0FBQ3ZCLE9BQU8sUUFBUSxNQUFNLFVBQVUsQ0FBQTtBQUMvQixPQUFPLGNBQWMsTUFBTSx3Q0FBd0MsQ0FBQTtBQUNuRSxPQUFPLFdBQVcsTUFBTSxxQ0FBcUMsQ0FBQTtBQUM3RCxPQUFPLGNBQWMsTUFBTSw4QkFBOEIsQ0FBQTtBQUN6RCxPQUFPLGNBQWMsTUFBTSw4QkFBOEIsQ0FBQTtBQUN6RCxPQUFPLGdCQUFnQixNQUFNLGdDQUFnQyxDQUFBO0FBQzdELE9BQU8sZ0JBQWdCLE1BQU0sZ0NBQWdDLENBQUE7QUFDN0QsT0FBTyxjQUFjLE1BQU0sOEJBQThCLENBQUE7QUFDekQsT0FBTyxjQUFjLE1BQU0sOEJBQThCLENBQUE7QUFDekQsT0FBTyxnQkFBZ0IsTUFBTSxnQ0FBZ0MsQ0FBQTtBQUM3RCxPQUFPLGVBQWUsTUFBTSxnQ0FBZ0MsQ0FBQTtBQUM1RCxPQUFPLGlCQUFpQixNQUFNLGtDQUFrQyxDQUFBO0FBQ2hFLE9BQU8sZUFBZSxNQUFNLGdDQUFnQyxDQUFBO0FBQzVELE9BQU8saUJBQWlCLE1BQU0sa0NBQWtDLENBQUE7QUFDaEUsT0FBTyxrQkFBa0IsTUFBTSw0QkFBNEIsQ0FBQTtBQUczRCxNQUFNLEdBQUcsR0FBRyxPQUFPLEVBQUUsQ0FBQztBQUV0QixHQUFHLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxJQUFJLEVBQUUsQ0FBQyxDQUFBO0FBQ3ZCLEdBQUcsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEVBQUMsTUFBTSxFQUFDLEdBQUcsRUFBQyxDQUFDLENBQUMsQ0FBQTtBQUUzQixNQUFNLEdBQUcsR0FBRyxnQkFBZ0IsR0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLE9BQU8sR0FBQyxHQUFHLEdBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLEdBQUMsR0FBRyxHQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsT0FBTyxHQUFDLEdBQUcsR0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQTtBQUN4SCxRQUFRLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBQyxFQUFDLGVBQWUsRUFBRSxJQUFJLEVBQUMsa0JBQWtCLEVBQUUsSUFBSSxFQUFDLENBQUM7S0FDM0QsSUFBSSxDQUFDLEdBQUcsRUFBRSxDQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsa0JBQWtCLENBQUMsQ0FBQztLQUMzQyxLQUFLLENBQUUsS0FBSyxDQUFDLEVBQUUsQ0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUM7QUFFL0MsR0FBRyxDQUFDLEdBQUcsQ0FBQyxxQkFBcUIsRUFBQyxjQUFjLENBQUMsQ0FBQTtBQUM3QyxHQUFHLENBQUMsR0FBRyxDQUFDLGtCQUFrQixFQUFDLFdBQVcsQ0FBQyxDQUFBO0FBRXZDLHlCQUF5QjtBQUV6Qix5QkFBeUI7QUFDekIsR0FBRyxDQUFDLEdBQUcsQ0FBQyxzQkFBc0IsRUFBQyxjQUFjLENBQUMsQ0FBQTtBQUM5QyxHQUFHLENBQUMsR0FBRyxDQUFDLHNCQUFzQixFQUFDLGNBQWMsQ0FBQyxDQUFBO0FBQzlDLEdBQUcsQ0FBQyxHQUFHLENBQUMsd0JBQXdCLEVBQUMsZ0JBQWdCLENBQUMsQ0FBQTtBQUNsRCxHQUFHLENBQUMsR0FBRyxDQUFDLHNCQUFzQixFQUFDLGNBQWMsQ0FBQyxDQUFBO0FBQzlDLEdBQUcsQ0FBQyxHQUFHLENBQUMsd0JBQXdCLEVBQUMsZ0JBQWdCLENBQUMsQ0FBQTtBQUNsRCxHQUFHLENBQUMsR0FBRyxDQUFDLHNCQUFzQixFQUFDLGNBQWMsQ0FBQyxDQUFBO0FBQzlDLEdBQUcsQ0FBQyxHQUFHLENBQUMsd0JBQXdCLEVBQUMsZ0JBQWdCLENBQUMsQ0FBQTtBQUNsRCxHQUFHLENBQUMsR0FBRyxDQUFDLHVCQUF1QixFQUFDLGVBQWUsQ0FBQyxDQUFBO0FBQ2hELEdBQUcsQ0FBQyxHQUFHLENBQUMseUJBQXlCLEVBQUMsaUJBQWlCLENBQUMsQ0FBQTtBQUNwRCxHQUFHLENBQUMsR0FBRyxDQUFDLHVCQUF1QixFQUFDLGVBQWUsQ0FBQyxDQUFBO0FBQ2hELEdBQUcsQ0FBQyxHQUFHLENBQUMseUJBQXlCLEVBQUMsaUJBQWlCLENBQUMsQ0FBQTtBQUVwRCwyQkFBMkI7QUFDM0IsR0FBRyxDQUFDLEdBQUcsQ0FBQywwQkFBMEIsRUFBQyxrQkFBa0IsQ0FBQyxDQUFBO0FBRXRELE1BQU0sWUFBWSxHQUFHLEdBQUcsQ0FBQyxNQUFNLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxJQUFJLElBQUUsSUFBSSxFQUFDLEdBQUUsRUFBRTtJQUN6RCxPQUFPLENBQUMsR0FBRyxDQUFDLDZCQUE2QixDQUFDLENBQUE7QUFDMUMsQ0FBQyxDQUFDLENBQUEifQ==
