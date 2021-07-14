@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import {DB_TEAM_MODEL} from '../../utils/app-constants'
 import dotenv from'dotenv'
 dotenv.config()
 
@@ -22,5 +23,5 @@ const teamSchema = new mongoose.Schema<ITeam>({
   
 });
 
-const teamModel = mongoose.model(String(process.env.DB_TEAM_MODEL),teamSchema);
+const teamModel = mongoose.model(DB_TEAM_MODEL,teamSchema);
 export default teamModel;

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {DB_BATCH_MODEL} from '../../utils/app-constants'
 
 interface IBatch{
     batchId:string,
@@ -18,5 +19,5 @@ const batchSchema = new mongoose.Schema<IBatch>({
     batchMembers: { type: Object, required: true },
     lastupdateTime: {type: Date,default: Date.now}
 });
-const batchModel = mongoose.model(String(process.env.DB_BATCH_MODEL), batchSchema);
+const batchModel = mongoose.model(DB_BATCH_MODEL, batchSchema);
 export default batchModel;

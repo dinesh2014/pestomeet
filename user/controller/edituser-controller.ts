@@ -5,7 +5,7 @@ import {message} from '../../utils/response-format'
 
 const ApprovalController =(request:any,response:any)=>{
     let {name,email,phone,role,experience,approval}= request.body; 
-    let id = request.params.id;
+    let id = String(request.params.id);
     const errors = validationResult(request);
     if (!errors.isEmpty()) {
       return response.json(message("Validation Error", errors.array(),false));

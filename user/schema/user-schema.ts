@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import {DB_USER_MODEL} from '../../utils/app-constants'
 
 interface IUser{
   id:string,
@@ -24,5 +25,5 @@ const userSchema = new mongoose.Schema<IUser>({
   approval:{type:String,require:true}
 });
 
-const userModel = mongoose.model(String(process.env.DB_USER_MODEL),userSchema);
+const userModel = mongoose.model(DB_USER_MODEL,userSchema);
 export default userModel;

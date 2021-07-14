@@ -11,9 +11,9 @@ interface Callback<T> {
   }
 
 const s3 = new aws.S3({
-    accessKeyId:"AKIAXCQP2ZQ6J2ALHHGN",
-    secretAccessKey:"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",
-    region:'ap-south-1',
+    accessKeyId:process.env.ACCESS_KEY,
+    secretAccessKey:process.env.SECRET_KEY,
+    region:process.env.REGION,
 });
 
 const profileImgUpload = multer({
@@ -21,7 +21,7 @@ const profileImgUpload = multer({
      s3: s3,
      bucket:'pestomeet-recordings',
      key: function (req, file, cb:Callback<string>) {
-      cb(null, path.basename( file.originalname, path.extname( file.originalname ) )+ path.extname( file.originalname ) )
+      cb(null,process.env.PROFILE_FOLDER+'/'+path.basename( file.originalname, path.extname( file.originalname ) )+ path.extname( file.originalname ) )
      }
     }),
     limits:{ fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB

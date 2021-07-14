@@ -9,6 +9,6 @@ import avatarController from '../controller/avatar-controller'
 const avatarRouter= express.Router()
 
 
-avatarRouter.post('/',avatarController)
+avatarRouter.post('/:id',avatarController)
 
 export default avatarRouter;
