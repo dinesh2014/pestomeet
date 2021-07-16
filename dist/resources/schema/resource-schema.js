@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
 import { DB_RESOURCE_MODEL } from "../../utils/app-constants";
 const resourceSchema = new mongoose.Schema({
-  resourceId: { type: String, required: true },
-  resourceName: { type: String, required: true },
-  uploaderId: { type: String, required: true },
-  uploaderName: { type: String, required: true },
-  eventID: { type: String, required: true },
-  eventName: { type: String, required: true },
-  eventType: { type: String, require: true },
-  assignment: { type: String, require: true },
-  resource: { type: String, require: true },
-  resourceKey: { type: String, require: true },
-  lastupdateTime: { type: Date, default: Date.now },
+    resourceId: { type: String, required: true },
+    resourceName: { type: String, required: true },
+    uploaderId: { type: String, required: true },
+    uploaderName: { type: String, required: true },
+    eventID: { type: String, required: true },
+    eventName: { type: String, required: true },
+    eventType: { type: String, require: true },
+    assignment: { type: String, require: true },
+    resource: { type: String, require: true },
+    resourceKey: { type: String, require: true },
+    lastupdateTime: { type: Date, default: Date.now },
 });
 const resourceModel = mongoose.model(DB_RESOURCE_MODEL, resourceSchema);
 export default resourceModel;

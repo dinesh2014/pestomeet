@@ -3,13 +3,13 @@ import { DB_TEAM_MODEL } from "../../utils/app-constants";
 import dotenv from "dotenv";
 dotenv.config();
 const teamSchema = new mongoose.Schema({
-  teamId: { type: String, required: true },
-  teamName: { type: String, required: true },
-  teamType: { type: String, required: true },
-  mentorId: { type: String, require: true },
-  mentorName: { type: String, required: true },
-  teamMembers: { type: Object, required: true },
-  lastupdateTime: { type: Date, default: Date.now },
+    teamId: { type: String, required: true },
+    teamName: { type: String, required: true },
+    teamType: { type: String, required: true },
+    mentorId: { type: String, require: true },
+    mentorName: { type: String, required: true },
+    teamMembers: { type: Object, required: true },
+    lastupdateTime: { type: Date, default: Date.now },
 });
 const teamModel = mongoose.model(DB_TEAM_MODEL, teamSchema);
 export default teamModel;
