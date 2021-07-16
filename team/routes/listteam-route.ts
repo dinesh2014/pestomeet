@@ -1,5 +1,5 @@
-import express from 'express';
-import listteamController from '../controller/listteam-controller';
+import express from "express";
+import listteamController from "../controller/listteam-controller";
 const listteamRouter = express.Router();
-listteamRouter.get('/:type', listteamController);
+listteamRouter.get("/:type", listteamController);
 export default listteamRouter;

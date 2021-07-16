@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "prettier": "2.3.2"
   },
   "scripts": {
     "start": "tsc && node --max_old_space_size=2560 --es-module-specifier-resolution=node --unhandled-rejections=strict ./dist/server.js",
