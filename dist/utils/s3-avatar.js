@@ -3,34 +3,36 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3, PROFILE_FOLDER } from "./app-constants";
 const profileImgUpload = multer({
-    storage: multerS3({
-        s3: S3,
-        bucket: "pestomeet-recordings",
-        key: function (req, file, cb) {
-            cb(null, PROFILE_FOLDER +
-                "/" +
-                path.basename(file.originalname, path.extname(file.originalname)) +
-                path.extname(file.originalname));
-        },
-    }),
-    limits: { fileSize: 2000000 },
-    fileFilter: function (req, file, cb) {
-        checkFileType(file, cb);
+  storage: multerS3({
+    s3: S3,
+    bucket: "pestomeet-recordings",
+    key: function (req, file, cb) {
+      cb(
+        null,
+        PROFILE_FOLDER +
+          "/" +
+          path.basename(file.originalname, path.extname(file.originalname)) +
+          path.extname(file.originalname)
+      );
     },
+  }),
+  limits: { fileSize: 2000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).single("profileImage");
 function checkFileType(file, cb) {
-    // Allowed ext
-    const filetypes = /jpeg|jpg|png|gif/;
-    // Check ext
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    // Check mime
-    const mimetype = filetypes.test(file.mimetype);
-    if (mimetype && extname) {
-        return cb(null, true);
-    }
-    else {
-        cb(null, false);
-    }
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb(null, false);
+  }
 }
 export default profileImgUpload;
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiczMtYXZhdGFyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vdXRpbHMvczMtYXZhdGFyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBLE9BQU8sSUFBSSxNQUFNLE1BQU0sQ0FBQztBQUV4QixPQUFPLE1BQU0sTUFBTSxRQUFRLENBQUM7QUFDNUIsT0FBTyxRQUFRLE1BQU0sV0FBVyxDQUFDO0FBQ2pDLE9BQU8sRUFBRSxFQUFFLEVBQUUsY0FBYyxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFNckQsTUFBTSxnQkFBZ0IsR0FBRyxNQUFNLENBQUM7SUFDOUIsT0FBTyxFQUFFLFFBQVEsQ0FBQztRQUNoQixFQUFFLEVBQUUsRUFBRTtRQUNOLE1BQU0sRUFBRSxzQkFBc0I7UUFDOUIsR0FBRyxFQUFFLFVBQVUsR0FBRyxFQUFFLElBQUksRUFBRSxFQUFvQjtZQUM1QyxFQUFFLENBQ0EsSUFBSSxFQUNKLGNBQWM7Z0JBQ1osR0FBRztnQkFDSCxJQUFJLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxZQUFZLEVBQUUsSUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsWUFBWSxDQUFDLENBQUM7Z0JBQ2pFLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQyxDQUNsQyxDQUFDO1FBQ0osQ0FBQztLQUNGLENBQUM7SUFDRixNQUFNLEVBQUUsRUFBRSxRQUFRLEVBQUUsT0FBTyxFQUFFO0lBQzdCLFVBQVUsRUFBRSxVQUFVLEdBQUcsRUFBRSxJQUFJLEVBQUUsRUFBNkI7UUFDNUQsYUFBYSxDQUFDLElBQUksRUFBRSxFQUFFLENBQUMsQ0FBQztJQUMxQixDQUFDO0NBQ0YsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxjQUFjLENBQUMsQ0FBQztBQUUxQixTQUFTLGFBQWEsQ0FBQyxJQUFTLEVBQUUsRUFBNkI7SUFDN0QsY0FBYztJQUNkLE1BQU0sU0FBUyxHQUFHLGtCQUFrQixDQUFDO0lBQ3JDLFlBQVk7SUFDWixNQUFNLE9BQU8sR0FBRyxTQUFTLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDLENBQUM7SUFDOUUsYUFBYTtJQUNiLE1BQU0sUUFBUSxHQUFHLFNBQVMsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDO0lBQy9DLElBQUksUUFBUSxJQUFJLE9BQU8sRUFBRTtRQUN2QixPQUFPLEVBQUUsQ0FBQyxJQUFJLEVBQUUsSUFBSSxDQUFDLENBQUM7S0FDdkI7U0FBTTtRQUNMLEVBQUUsQ0FBQyxJQUFJLEVBQUUsS0FBSyxDQUFDLENBQUM7S0FDakI7QUFDSCxDQUFDO0FBRUQsZUFBZSxnQkFBZ0IsQ0FBQyJ9

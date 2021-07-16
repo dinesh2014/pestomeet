@@ -4,14 +4,17 @@ import path from "path";
 import aws from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
-import { S3,BUCKET} from "./app-constants";
+import { S3, BUCKET } from "./app-constants";
 
 interface Callback<T> {
   (error: Error): void;
   (error: null, value: T): void;
 }
 
-S3.deleteObject({
-  Bucket: BUCKET,
-  Key: 'some/subfolders/nameofthefile1.extension'
-},function (err,data){})
+S3.deleteObject(
+  {
+    Bucket: BUCKET,
+    Key: "some/subfolders/nameofthefile1.extension",
+  },
+  function (err, data) {}
+);

@@ -4,7 +4,7 @@ import path from "path";
 import aws from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
-import { S3,BUCKET,MASTERCLASS_FOLDER } from "./app-constants";
+import { S3, BUCKET, MASTERCLASS_FOLDER } from "./app-constants";
 
 interface Callback<T> {
   (error: Error): void;
@@ -14,11 +14,17 @@ const masterClassUpload = multer({
   storage: multerS3({
     s3: S3,
     bucket: BUCKET,
-    key: function (req:any, file, cb: Callback<string>) {
+    key: function (req: any, file, cb: Callback<string>) {
       cb(
         null,
         MASTERCLASS_FOLDER +
-          "/" +req.body.resourceName+'_'+req.body.uploaderId+'_'+req.body.eventID+path.extname(file.originalname)
+          "/" +
+          req.body.resourceName +
+          "_" +
+          req.body.uploaderId +
+          "_" +
+          req.body.eventID +
+          path.extname(file.originalname)
       );
     },
   }),

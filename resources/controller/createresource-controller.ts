@@ -14,7 +14,7 @@ const ResourceController = (request: any, response: any) => {
         response.json("Error: No File Selected");
       } else {
         const resource = request.file.location;
-        const resourceKey = request.file.key
+        const resourceKey = request.file.key;
         const {
           resourceName,
           uploaderId,
@@ -31,7 +31,7 @@ const ResourceController = (request: any, response: any) => {
           eventID: eventID,
           eventName: eventName.toLowerCase(),
           eventType: eventType.toLowerCase(),
-          resourceKey:resourceKey,
+          resourceKey: resourceKey,
           resource: resource,
         });
         resourceSchema.findOne(
