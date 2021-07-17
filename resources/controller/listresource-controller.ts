@@ -2,7 +2,7 @@ import resourceDB from "../schema/resource-schema";
 import { message } from "../../utils/response-format";
 
 const ListresourceController = (request: any, response: any) => {
-  const eventID = request.body.eventID;
+  const eventID = request.params.eventID;
   resourceDB
     .find(
       {eventID: eventID},
