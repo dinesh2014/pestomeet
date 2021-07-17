@@ -8,6 +8,7 @@ import registerRouter from "./authentication/routes/register-route";
 import loginRouter from "./authentication/routes/login-route";
 import edituserRouter from "./user/routes/edituser-route";
 import listuserRouter from "./user/routes/listuser-route";
+import listalluserRouter from "./user/routes/listalluser-route";
 import deleteuserRouter from "./user/routes/deleteuser-route";
 import createteamRouter from "./team/routes/createteam-route";
 import editteamRouter from "./team/routes/editteam-route";
@@ -47,6 +48,7 @@ app.use("/api/pesto/login", loginRouter);
 
 /*Admin Screen Routers */
 app.use("/api/pesto/list/user", listuserRouter);
+app.use("/api/pesto/list/user/all", listalluserRouter);
 app.use("/api/pesto/edit/user", edituserRouter);
 app.use("/api/pesto/delete/user", deleteuserRouter);
 app.use("/api/pesto/list/team", listteamRouter);
