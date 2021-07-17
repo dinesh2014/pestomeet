@@ -1,4 +1,4 @@
-import editTeam from "../schema/team-schema";
+import teamDB from "../schema/team-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
@@ -17,7 +17,7 @@ const ApprovalController = (request: any, response: any) => {
     mentorName: mentorName,
     teamMembers: teamMembers,
   };
-  const doc = editTeam.findOneAndUpdate(
+  const doc = teamDB.findOneAndUpdate(
     { teamId: teamId },
     { $set: editTeams },
     { useFindAndModify: false, new: true },

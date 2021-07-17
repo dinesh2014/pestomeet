@@ -1,10 +1,10 @@
-import listUser from "../schema/user-schema";
+import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 
 const ListuserController = (request: any, response: any) => {
   const status = request.params.status;
   const role = request.params.role;
-  listUser
+  userDB
     .find(
       { approval: status.toLowerCase(), role: role.toLowerCase() },
       (errors: any, result: any) => {

@@ -1,10 +1,10 @@
-import resourceSchema from "../schema/resource-schema";
+import resourceDB from "../schema/resource-schema";
 import { message } from "../../utils/response-format";
 import { S3, BUCKET } from "../../utils/app-constants";
 
 const DeleteresourceController = (request: any, response: any) => {
   const resourceId = request.body.resourceId;
-  resourceSchema.findOne(
+  resourceDB.findOne(
     { resourceId: resourceId },
     (errors: any, docs: any) => {
       if (errors) {
@@ -23,7 +23,7 @@ const DeleteresourceController = (request: any, response: any) => {
                 message("Error while deleting Resource ", errors, false)
               );
             } else {
-              resourceSchema.deleteOne(
+              resourceDB.deleteOne(
                 { resourceId: resourceId },
                 (errors) => {
                   if (errors) {

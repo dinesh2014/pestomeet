@@ -1,4 +1,4 @@
-import editBatch from "../schema/batch-schema";
+import batchDB from "../schema/batch-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
@@ -16,7 +16,7 @@ const ApprovalController = (request: any, response: any) => {
     batchOwner: batchOwner,
     batchMembers: batchMembers,
   };
-  const doc = editBatch.findOneAndUpdate(
+  const doc = batchDB.findOneAndUpdate(
     { batchId: batchId },
     { $set: editBatches },
     { useFindAndModify: false, new: true },

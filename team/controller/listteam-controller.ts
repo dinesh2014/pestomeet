@@ -1,9 +1,9 @@
-import listTeam from "../schema/team-schema";
+import teamDB from "../schema/team-schema";
 import { message } from "../../utils/response-format";
 
 const ListteamController = (request: any, response: any) => {
   const teamType = request.params.type;
-  listTeam.find(
+  teamDB.find(
     { teamType: teamType.toLowerCase() },
     (errors: any, result: any) => {
       if (errors) {

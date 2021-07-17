@@ -1,8 +1,8 @@
-import listUser from "../schema/user-schema";
+import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 
 const ListalluserController = (request: any, response: any) => {
-  listUser
+  userDB
     .find({},
       (errors: any, result: any) => {
         if (errors) {

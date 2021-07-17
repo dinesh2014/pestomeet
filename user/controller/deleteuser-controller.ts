@@ -1,9 +1,9 @@
-import DeleteUser from "../schema/user-schema";
+import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 
 const DeleteuserController = (request: any, response: any) => {
   const id = request.params.id;
-  DeleteUser.findOneAndDelete({ id: id }, {}, (errors: any, docs: any) => {
+  userDB.findOneAndDelete({ id: id }, {}, (errors: any, docs: any) => {
     if (errors) {
       response.json(message("Error while deleting User", null, false));
     } else if (!docs) {

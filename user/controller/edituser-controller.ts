@@ -1,4 +1,4 @@
-import EditUser from "../schema/user-schema";
+import userDB from "../schema/user-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
@@ -19,7 +19,7 @@ const ApprovalController = (request: any, response: any) => {
     experience: experience,
     approval: approval.toLowerCase(),
   };
-  const doc = EditUser.findOneAndUpdate(
+  const doc = userDB.findOneAndUpdate(
     { id: id },
     { $set: editUser },
     { useFindAndModify: false, new: true },

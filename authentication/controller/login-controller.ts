@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
 import jwt, { Secret } from "jsonwebtoken";
-import registerUser from "../../user/schema/user-schema";
+import userDB from "../../user/schema/user-schema";
 import { message } from "../../utils/response-format";
 
 const LoginController = (request: any, response: any) => {
   const { email, phone, password } = request.body;
-  registerUser.findOne(
+  userDB.findOne(
     {
       $and: [
         { $or: [{ email: email.toLowerCase() }, { phone: phone }] },

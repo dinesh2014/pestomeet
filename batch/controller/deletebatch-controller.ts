@@ -1,9 +1,9 @@
-import deleteBatch from "../schema/batch-schema";
+import batchDB from "../schema/batch-schema";
 import { message } from "../../utils/response-format";
 
 const DeleteteamController = (request: any, response: any) => {
   const id = request.params.id;
-  deleteBatch.findOneAndDelete({ teamId: id }, {}, (errors: any, docs: any) => {
+  batchDB.findOneAndDelete({ teamId: id }, {}, (errors: any, docs: any) => {
     if (errors) {
       response.json(message("Error while deleting batch", null, false));
     } else if (!docs) {

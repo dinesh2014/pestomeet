@@ -1,4 +1,4 @@
-import registerUser from "../../user/schema/user-schema";
+import userDB from "../../user/schema/user-schema";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
 import { validationResult } from "express-validator";
@@ -14,7 +14,7 @@ const RegisterController = (reqest: any, response: any) => {
   }
 
   const hash = bcrypt.hashSync(password, 10);
-  const newUser = new registerUser({
+  const newUser = new userDB({
     id: id,
     name: name.toLowerCase(),
     email: email.toLowerCase(),
@@ -25,7 +25,7 @@ const RegisterController = (reqest: any, response: any) => {
     approval: approval.toLowerCase(),
   });
 
-  registerUser.findOne(
+  userDB.findOne(
     { $or: [{ email: email.toLowerCase() }, { phone: phone }] },
     (error: any, result: any) => {
       if (error) {

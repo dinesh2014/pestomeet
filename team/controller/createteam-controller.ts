@@ -1,11 +1,11 @@
-import registerTeam from "../schema/team-schema";
+import teamDB from "../schema/team-schema";
 import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 
 var teamId = uuidv4();
 const RegisterteamController = (reqest: any, response: any) => {
   const { teamName, teamType, mentorId, mentorName, teamMembers } = reqest.body;
-  let newTeam = new registerTeam({
+  let newTeam = new teamDB({
     teamId: teamId,
     teamName: teamName.toLowerCase(),
     teamType: teamType.toLowerCase(),
@@ -14,7 +14,7 @@ const RegisterteamController = (reqest: any, response: any) => {
     teamMembers: teamMembers,
   });
 
-  registerTeam.findOne(
+  teamDB.findOne(
     { teamName: teamName.toLowerCase() },
     (error: any, result: any) => {
       if (error) {

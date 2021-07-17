@@ -1,4 +1,4 @@
-import resourceSchema from "../schema/resource-schema";
+import resourceDB from "../schema/resource-schema";
 import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 import masterClassUpload from "../../utils/s3-masterclass";
@@ -23,7 +23,7 @@ const ResourceController = (request: any, response: any) => {
           eventName,
           eventType,
         } = request.body;
-        const newBatch = new resourceSchema({
+        const newBatch = new resourceDB({
           resourceId: resourceId,
           resourceName: resourceName.toLowerCase(),
           uploaderId: uploaderId,
@@ -34,7 +34,7 @@ const ResourceController = (request: any, response: any) => {
           resourceKey: resourceKey,
           resource: resource,
         });
-        resourceSchema.findOne(
+        resourceDB.findOne(
           { resourceKey: resourceKey },
           (error: any, result: any) => {
             if (error) {

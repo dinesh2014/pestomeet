@@ -1,4 +1,4 @@
-import uploadAvatar from "../schema/user-schema";
+import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 import profileImgUpload from "../../utils/s3-avatar";
 
@@ -16,7 +16,7 @@ const AvatarController = (request: any, response: any) => {
         const imageName = request.file;
         let editUser = { avatar: imageName.location };
         console.log(id);
-        uploadAvatar.findOneAndUpdate(
+        userDB.findOneAndUpdate(
           { id: id },
           { $set: editUser },
           { useFindAndModify: false, new: true },

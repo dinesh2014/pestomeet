@@ -1,9 +1,9 @@
-import listBatch from "../schema/batch-schema";
+import batchDB from "../schema/batch-schema";
 import { message } from "../../utils/response-format";
 
 const ListbatchController = (request: any, response: any) => {
   const batchType = request.params.type;
-  listBatch.find({ batchType: batchType }, (errors: any, result: any) => {
+  batchDB.find({ batchType: batchType }, (errors: any, result: any) => {
     if (!errors) {
       if (result.length == 0) {
         response.json(

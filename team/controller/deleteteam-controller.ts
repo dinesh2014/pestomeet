@@ -1,11 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
-import deleteTeam from "../schema/team-schema";
+import teamDB from "../schema/team-schema";
 import { message } from "../../utils/response-format";
 
 const DeleteteamController = (request: any, response: any) => {
   const id = request.params.id;
-  deleteTeam.findOneAndDelete({ teamId: id }, {}, (errors: any, docs: any) => {
+  teamDB.findOneAndDelete({ teamId: id }, {}, (errors: any, docs: any) => {
     if (errors) {
       response.json(message("Error while deleting User", null, false));
     } else if (!docs) {
