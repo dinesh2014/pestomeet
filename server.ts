@@ -21,6 +21,7 @@ import deletebatchRouter from "./batch/routes/deletebatch-route";
 import avataruploadRouter from "./user/routes/avatar-route";
 import createresourceRouter from "./resources/routes/createresource-route";
 import deleteresourceRouter from "./resources/routes/deleteresource-route";
+import listresourceRouter from "./resources/routes/listresource-route"
 
 const app = express();
 
@@ -64,6 +65,7 @@ app.use("/api/pesto/delete/batch", deletebatchRouter);
 app.use("/api/pesto/avatar/upload", avataruploadRouter);
 app.use("/api/pesto/resource/upload", createresourceRouter);
 app.use("/api/pesto/resource/delete", deleteresourceRouter);
+app.use("/api/pesto/resource/list", listresourceRouter);
 
 const serverListen = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started Successfully");
