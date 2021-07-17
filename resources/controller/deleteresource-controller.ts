@@ -3,9 +3,9 @@ import { message } from "../../utils/response-format";
 import { S3, BUCKET } from "../../utils/app-constants";
 
 const DeleteresourceController = (request: any, response: any) => {
-  const resourceKey = request.body.resourceKey;
+  const resourceId = request.body.resourceId;
   resourceSchema.find(
-    { resourceKey: resourceKey },
+    { resourceId: resourceId },
     (errors: any, docs: any) => {
       if (errors) {
         response.json(message("Error while deleting Resource", errors, false));
@@ -15,7 +15,7 @@ const DeleteresourceController = (request: any, response: any) => {
         S3.deleteObject(
           {
             Bucket: BUCKET,
-            Key: resourceKey,
+            Key: docs[0].resourceKey,
           },
           function (errors: any, data: any) {
             if (errors) {
@@ -24,7 +24,7 @@ const DeleteresourceController = (request: any, response: any) => {
               );
             } else {
               resourceSchema.deleteOne(
-                { resourceKey: resourceKey },
+                { resourceId: resourceId },
                 (errors) => {
                   if (errors) {
                     response.json(
