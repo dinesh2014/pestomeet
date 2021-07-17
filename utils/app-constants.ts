@@ -8,7 +8,7 @@ export const DB_TEAM_MODEL = "teamModel";
 export const DB_RESOURCE_MODEL = "resourceModel";
 
 export const S3 = new aws.S3({
-  accessKeyId: process.env.ACCESS_ID,
+  accessKeyId: process.env.ACCESS_KEY,
   secretAccessKey: process.env.SECRET_KEY,
   region: process.env.REGION,
 });
