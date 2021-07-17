@@ -4,7 +4,7 @@ import { S3, BUCKET } from "../../utils/app-constants";
 
 const DeleteresourceController = (request: any, response: any) => {
   const resourceId = request.body.resourceId;
-  resourceSchema.find(
+  resourceSchema.findOne(
     { resourceId: resourceId },
     (errors: any, docs: any) => {
       if (errors) {
@@ -15,7 +15,7 @@ const DeleteresourceController = (request: any, response: any) => {
         S3.deleteObject(
           {
             Bucket: BUCKET,
-            Key: docs[0].resourceKey,
+            Key: docs.resourceKey,
           },
           function (errors: any, data: any) {
             if (errors) {
