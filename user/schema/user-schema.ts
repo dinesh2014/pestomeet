@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 import { DB_USER_MODEL } from "../../utils/app-constants";
 
 interface IUser {
@@ -14,7 +15,7 @@ interface IUser {
 }
 
 const userSchema = new mongoose.Schema<IUser>({
-  id: { type: String, required: true },
+  id: { type: String, required: true,default: () => uuidv4()},
   name: { type: String, required: true },
   avatar: { type: String },
   email: { type: String, required: true },

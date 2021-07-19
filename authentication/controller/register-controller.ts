@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
-const id = uuidv4();
 const RegisterController = (reqest: any, response: any) => {
   const { name, email, phone, password, role, experience, approval } =
     reqest.body;
@@ -15,7 +14,6 @@ const RegisterController = (reqest: any, response: any) => {
 
   const hash = bcrypt.hashSync(password, 10);
   const newUser = new userDB({
-    id: id,
     name: name.toLowerCase(),
     email: email.toLowerCase(),
     phone: phone,

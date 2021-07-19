@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { DB_RESOURCE_MODEL } from "../../utils/app-constants";
+import { v4 as uuidv4 } from "uuid";
 
 interface IResource {
   resourceId: string;
@@ -15,7 +16,7 @@ interface IResource {
 }
 
 const resourceSchema = new mongoose.Schema<IResource>({
-  resourceId: { type: String, required: true },
+  resourceId: { type: String, required: true,default: () => uuidv4() },
   resourceName: { type: String, required: true },
   uploaderId: { type: String, required: true },
   uploaderName: { type: String, required: true },

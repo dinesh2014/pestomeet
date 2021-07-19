@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 import masterClassUpload from "../../utils/s3-masterclass";
 
-const resourceId = uuidv4();
 const ResourceController = (request: any, response: any) => {
   masterClassUpload(request, response, (error) => {
     if (error) {
@@ -24,7 +23,6 @@ const ResourceController = (request: any, response: any) => {
           eventType,
         } = request.body;
         const newBatch = new resourceDB({
-          resourceId: resourceId,
           resourceName: resourceName.toLowerCase(),
           uploaderId: uploaderId,
           uploaderName: uploaderName.toLowerCase(),

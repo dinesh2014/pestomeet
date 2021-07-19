@@ -4,6 +4,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+import scheduler from './notification/scheduler';
 import registerRouter from "./authentication/routes/register-route";
 import loginRouter from "./authentication/routes/login-route";
 import edituserRouter from "./user/routes/edituser-route";
@@ -21,7 +22,8 @@ import deletebatchRouter from "./batch/routes/deletebatch-route";
 import avataruploadRouter from "./user/routes/avatar-route";
 import createresourceRouter from "./resources/routes/createresource-route";
 import deleteresourceRouter from "./resources/routes/deleteresource-route";
-import listresourceRouter from "./resources/routes/listresource-route"
+import listresourceRouter from "./resources/routes/listresource-route";
+import createeventRouter from "./event/routes/createevent-route";
 
 const app = express();
 
@@ -67,6 +69,12 @@ app.use("/api/pesto/resource/upload", createresourceRouter);
 app.use("/api/pesto/resource/delete", deleteresourceRouter);
 app.use("/api/pesto/resource/list", listresourceRouter);
 
+/*Resource Upload Routers*/
+app.use("/api/pesto/create/event", createeventRouter);
+
+//scheduler.start();
+
 const serverListen = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started Successfully");
 });
+

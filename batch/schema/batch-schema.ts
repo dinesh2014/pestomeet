@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 import { DB_BATCH_MODEL } from "../../utils/app-constants";
 
 interface IBatch {
@@ -11,7 +12,7 @@ interface IBatch {
 }
 
 const batchSchema = new mongoose.Schema<IBatch>({
-  batchId: { type: String, required: true },
+  batchId: { type: String, required: true,default: () => uuidv4() },
   batchName: { type: String, required: true },
   batchType: { type: String, required: true },
   batchOwner: { type: String, require: true },

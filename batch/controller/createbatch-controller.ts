@@ -2,11 +2,10 @@ import batchDB from "../schema/batch-schema";
 import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 
-const batchId = uuidv4();
+
 const CreatebatchController = (reqest: any, response: any) => {
   const { batchName, batchType, batchOwner, batchMembers } = reqest.body;
   const newBatch = new batchDB({
-    batchId: batchId,
     batchName: batchName.toLowerCase(),
     batchType: batchType,
     batchOwner: batchOwner,
