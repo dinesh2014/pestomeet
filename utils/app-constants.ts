@@ -18,6 +18,8 @@ export const BUCKET = "pestomeet-recordings";
 export const PROFILE_FOLDER = "profile-pics";
 export const MASTERCLASS_FOLDER = "masterclass-videos";
 
-export const ACCOUNT_ID = 'AC6ecec09e01c371ecd96fa2f8bab4d386'; 
-export const AUTH_TOKEN = '8a50c5596e5c4cf5f2ad103bf555bc50'; 
-export const MSG_ID ='MGb12e410ab49d0e5949cafb04c85f3c9c'
+export const ACCOUNT_ID = process.env.ACCOUNT_ID; 
+export const AUTH_TOKEN = process.env.AUTH_TOKEN; 
+export const MSG_ID = process.env.MSG_ID;
+
+export const COUNTRY_CODE = '91'

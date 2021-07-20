@@ -72,7 +72,7 @@ app.use("/api/pesto/resource/list", listresourceRouter);
 /*Resource Upload Routers*/
 app.use("/api/pesto/create/event", createeventRouter);
 
-//scheduler.start();
+scheduler.start();
 
 const serverListen = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started Successfully");

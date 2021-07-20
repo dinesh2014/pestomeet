@@ -1,9 +1,9 @@
-import appointment from "./appointment" 
+import Appointment from "./appointment" 
 
 const notificationWorkerFactory = function() {
   return {
     run: function() {
-        //appointment.sendNotifications(); 
+      Appointment(); 
     },
   };
 };
