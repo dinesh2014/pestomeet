@@ -31,7 +31,7 @@ const profileImgUpload = multer({
 }).single("profileImage");
 
 function checkFileType(file: any, cb: multer.FileFilterCallback) {
-  // Allowed ext
+  // Allowed extension
   const filetypes = /jpeg|jpg|png|gif/;
   // Check ext
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
