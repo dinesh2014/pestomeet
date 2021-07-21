@@ -28,7 +28,7 @@ const RegisterteamController = (request: any, response: any) => {
           if (error) {
             response.json({ message: error });
           } else {
-            response.json(message("Team Registered Successfully", null, false));
+            response.json(message("Team Registered Successfully", null, true));
           }
         });
       } else {

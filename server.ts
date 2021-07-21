@@ -24,6 +24,8 @@ import createresourceRouter from "./resources/routes/createresource-route";
 import deleteresourceRouter from "./resources/routes/deleteresource-route";
 import listresourceRouter from "./resources/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
+import listeventRouter from "./event/routes/listevent-route";
+import deleteeventRouter from "./event/routes/deleteevent-route";
 
 const app = express();
 
@@ -71,7 +73,8 @@ app.use("/api/pesto/resource/list", listresourceRouter);
 
 /*Resource Upload Routers*/
 app.use("/api/pesto/create/event", createeventRouter);
-
+app.use("/api/pesto/list/event", listeventRouter);
+app.use("/api/pesto/delete/event", deleteeventRouter);
 scheduler.start();
 
 const serverListen = app.listen(process.env.PORT || 5000, () => {
