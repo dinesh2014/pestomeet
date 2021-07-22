@@ -26,11 +26,17 @@ import listresourceRouter from "./resources/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
 import listeventRouter from "./event/routes/listevent-route";
 import deleteeventRouter from "./event/routes/deleteevent-route";
+import Authentication from "./utils/check-token";
 
 const app = express();
+var allowCrossDomain = {
+  Origin:'*',
+  method:['GET','PUT','POST','DELETE','PATCH'],
+  allowedHeaders:'Content-Type ,'
+}
 
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(cors(allowCrossDomain));
 
 const uri =
   "mongodb+srv://" +
@@ -49,7 +55,7 @@ mongoose
 app.use("/api/pesto/register", registerRouter);
 app.use("/api/pesto/login", loginRouter);
 
-//app.use(authMiddleware)
+app.use(Authentication)
 
 /*Admin Screen Routers */
 app.use("/api/pesto/list/user", listuserRouter);
