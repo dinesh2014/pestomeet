@@ -32,7 +32,7 @@ const app = express();
 var allowCrossDomain = {
   Origin:'*',
   method:['GET','PUT','POST','DELETE','PATCH'],
-  allowedHeaders:'Content-Type ,'
+  allowedHeaders:['Content-Type','Authorization']
 }
 
 app.use(express.json());
