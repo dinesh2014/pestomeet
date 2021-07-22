@@ -8,6 +8,7 @@ export interface IEvent {
   eventType: string;
   eventStart:Date;
   eventEnd:Date;
+  eventColor:String;
   attendees: Array<Object>;
   lastupdateTime:Date ;
 }
@@ -18,6 +19,7 @@ export const eventSchema = new mongoose.Schema<IEvent>({
     eventType: { type: String, required: true },
     eventStart: { type: String, required: true },
     eventEnd: { type: String, required: true },
+    eventColor:{ type: String, required: true },
     organiserId:{ type: String, required: true },
     organiserName:{ type: String, required: true },
     attendees: { type: Object, required: true},

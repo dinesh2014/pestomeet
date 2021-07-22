@@ -11,6 +11,7 @@ interface IResource {
   eventName: string;
   eventType: string;
   resource: string;
+  resourceLinks:Array<String>
   resourceKey: string;
   lastupdateTime: { type: Date };
 }
@@ -23,8 +24,8 @@ const resourceSchema = new mongoose.Schema<IResource>({
   eventID: { type: String, required: true },
   eventName: { type: String, required: true },
   eventType: { type: String, require: true },
-  assignment: { type: String, require: true },
   resource: { type: String, require: true },
+  resourceLinks:{type:String,require:true},
   resourceKey: { type: String, require: true },
   lastupdateTime: { type: Date, default: Date.now },
 });

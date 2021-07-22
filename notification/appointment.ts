@@ -2,6 +2,8 @@ import moment from 'moment';
 import mongoose  from 'mongoose';
 import { tz } from 'moment-timezone';
 import eventDB,{eventSchema} from "../event/schema/event-schema";
+import batchDB from "../batch/schema/batch-schema";
+import userDB from "../user/schema/user-schema";
 import { ACCOUNT_ID,AUTH_TOKEN,MSG_ID,COUNTRY_CODE} from "../utils/app-constants";
 import twilio from 'twilio';
 
@@ -28,7 +30,7 @@ eventSchema.statics.sendNotifications = (callback)=>{
         }else{
             const appointments = result.filter(requireNotification);
             if (appointments.length > 0) {
-                 appointments.forEach((appointment:any)=>{
+                 appointments.map((appointment:any)=>{
                      sendNotifications(appointment);
             })
         }
@@ -37,31 +39,50 @@ eventSchema.statics.sendNotifications = (callback)=>{
 
 const sendNotifications = (appointment:any)=>{
     const client = twilio(ACCOUNT_ID,AUTH_TOKEN);
-    const Users = appointment.attendees
-    Users.forEach(function(User:any) {
-        const options = {
-            body: "Hi "+User.name+ ", Pesto "+appointment.eventType +"Event will start on"+
-                   appointment.eventStart + "Kindly Attend Without Fail",  
-            messagingServiceSid: MSG_ID,      
-            to: COUNTRY_CODE+User.phone 
-        };
-
-        // Send the message!
-        client.messages.create(options, function(err, response) {
-            if (err) {
-                // Just log it for now
-                console.error(err);
-            } else {
-                // Log the last few digits of a phone number
-                console.log(`Notification sent to `+ options.to);
+    const batches = appointment.attendees;
+    console.log(batches);
+    batches.map((batch:any)=>{
+        console.log(batch)
+        batchDB.findOne({batchId:batch.batchId},(error:any,result:any) =>{
+            if(error){
+                console.log(error)
+            }else if (!result){
+                console.log("No batch found")
+            }else{
+                let members = result.batchMembers;
+                members.map((member:any)=>{
+                    userDB.findOne({id:member.id},(error:any,result:any)=>{
+                        if(error){
+                            console.log(error);
+                        }else if(!result){
+                            console.log("No user found");
+                        }else{
+                            const options = {
+                                body: "Hi "+result.name+ ", Pesto "+appointment.eventType +"Event will start on"+
+                                       appointment.eventStart + "Kindly Attend Without Fail",  
+                                messagingServiceSid: MSG_ID,      
+                                to: COUNTRY_CODE+result.phone 
+                            };
+                            // Send the message!
+                            client.messages.create(options, function(err, response) {
+                                if (err) {
+                                    // Just log it for now
+                                    console.error(err);
+                                } else {
+                                    // Log the last few digits of a phone number
+                                    console.log(`Notification sent to `+ options.to);
+                                }
+                            });
+                        }
+                    }); 
+                 if (callback) {
+                     callback.call();
+                    }
+                })
             }
-        });
-    });
-
-    if (callback) {
-        callback.call();
-      }
-}
+         })
+    })
+  }
 }
 
 export default eventSchema.statics.sendNotifications

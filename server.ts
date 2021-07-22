@@ -71,10 +71,11 @@ app.use("/api/pesto/resource/upload", createresourceRouter);
 app.use("/api/pesto/resource/delete", deleteresourceRouter);
 app.use("/api/pesto/resource/list", listresourceRouter);
 
-/*Resource Upload Routers*/
+/*Event  Upload Routers*/
 app.use("/api/pesto/create/event", createeventRouter);
 app.use("/api/pesto/list/event", listeventRouter);
 app.use("/api/pesto/delete/event", deleteeventRouter);
+
 scheduler.start();
 
 const serverListen = app.listen(process.env.PORT || 5000, () => {
