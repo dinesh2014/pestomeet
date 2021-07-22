@@ -6,10 +6,11 @@ import { message } from "./response-format";
 
 function CheckToken(req:any,res:any,next:any){
   try{
-  const token = req.headers["Authorization"];
+  const token = req.headers["authorization"];
+  console.log(req.headers)
   if(token){
-    console.log(token)
     const authToken = token.split(' ')[1];
+    console.log(authToken)
     const key = process.env.JWT_SECRET as Secret;
     let payload = jwt.verify(authToken,key,(error:any,user:any)=>{
         if (error) {
