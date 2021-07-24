@@ -16,7 +16,7 @@ const batchSchema = new mongoose.Schema<IBatch>({
   batchName: { type: String, required: true },
   batchType: { type: String, required: true },
   batchOwner: { type: String, require: true },
-  batchMembers: { type: Object, required: true },
+  batchMembers: { type: Array, required: true },
   lastupdateTime: { type: Date, default: Date.now },
 });
 const batchModel = mongoose.model(DB_BATCH_MODEL, batchSchema);

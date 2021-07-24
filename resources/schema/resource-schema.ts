@@ -25,7 +25,7 @@ const resourceSchema = new mongoose.Schema<IResource>({
   eventName: { type: String, required: true },
   eventType: { type: String, require: true },
   resource: { type: String, require: true },
-  resourceLinks:{type:String},
+  resourceLinks:{type:Array},
   resourceKey: { type: String, require: true },
   lastupdateTime: { type: Date, default: Date.now },
 });

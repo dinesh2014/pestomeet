@@ -25,7 +25,7 @@ export const eventSchema = new mongoose.Schema<IEvent>({
     eventColor:{ type: String, required: true },
     organiserId:{ type: String, required: true },
     organiserName:{ type: String, required: true },
-    attendees: { type: Object, required: true},
+    attendees: { type: Array, required: true},
     hasAssignment:{ type: Boolean, required: true},
     lastupdateTime: { type: Date, default: Date.now },
 });

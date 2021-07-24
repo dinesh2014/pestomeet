@@ -20,7 +20,7 @@ const teamSchema = new mongoose.Schema<ITeam>({
   teamType: { type: String, required: true },
   mentorId: { type: String, require: true },
   mentorName: { type: String, required: true },
-  teamMembers: { type: Object, required: true },
+  teamMembers: { type: Array, required: true },
   lastupdateTime: { type: Date, default: Date.now },
 });
 

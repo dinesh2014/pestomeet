@@ -26,6 +26,9 @@ import listresourceRouter from "./resources/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
 import listeventRouter from "./event/routes/listevent-route";
 import deleteeventRouter from "./event/routes/deleteevent-route";
+import createassignmentRouter from "./assignments/routes/createassignment-route"
+import listassignmentRouter from "./assignments/routes/listassignment-route"
+import deleteassignmentRouter from "./assignments/routes/deleteassignment-route"
 import Authentication from "./utils/check-token";
 
 const app = express();
@@ -55,7 +58,7 @@ mongoose
 app.use("/api/pesto/register", registerRouter);
 app.use("/api/pesto/login", loginRouter);
 
-app.use(Authentication)
+//app.use(Authentication)
 
 /*Admin Screen Routers */
 app.use("/api/pesto/list/user", listuserRouter);
@@ -81,6 +84,12 @@ app.use("/api/pesto/resource/list", listresourceRouter);
 app.use("/api/pesto/create/event", createeventRouter);
 app.use("/api/pesto/list/event", listeventRouter);
 app.use("/api/pesto/delete/event", deleteeventRouter);
+
+/* Assigment Routers */
+app.use("/api/pesto/create/assignments", createassignmentRouter);
+app.use("/api/pesto/list/assignments", listassignmentRouter);
+app.use("/api/pesto/delete/assignments", deleteassignmentRouter);
+
 
 scheduler.start();
 
