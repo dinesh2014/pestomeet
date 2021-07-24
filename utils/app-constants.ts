@@ -8,6 +8,7 @@ export const DB_TEAM_MODEL = "teamModel";
 export const DB_RESOURCE_MODEL = "resourceModel";
 export const DB_EVENT_MODEL = "eventModel"
 export const DB_ASSIGNMENT_MODEL = "assignmentModel"
+export const DB_ANNOUNCEMENT_MODEL = "announcementModel"
 
 export const S3 = new aws.S3({
   accessKeyId: process.env.ACCESS_KEY,

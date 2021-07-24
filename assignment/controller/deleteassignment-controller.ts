@@ -11,7 +11,7 @@ const DeleteassignmentController = (request: any, response: any) => {
     } else if (!docs) {
       response.json(message("Assignment Not Found", docs, false));
     } else {
-      response.json(message("Assignmet deleted successfully", docs, true));
+      response.json(message("Assignment deleted successfully", docs, true));
     }
   });
 };

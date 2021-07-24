@@ -20,15 +20,18 @@ import createbatchRouter from "./batch/routes/createbatch-route";
 import editbatchRouter from "./batch/routes/editbatch-route";
 import deletebatchRouter from "./batch/routes/deletebatch-route";
 import avataruploadRouter from "./user/routes/avatar-route";
-import createresourceRouter from "./resources/routes/createresource-route";
-import deleteresourceRouter from "./resources/routes/deleteresource-route";
-import listresourceRouter from "./resources/routes/listresource-route";
+import createresourceRouter from "./resource/routes/createresource-route";
+import deleteresourceRouter from "./resource/routes/deleteresource-route";
+import listresourceRouter from "./resource/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
 import listeventRouter from "./event/routes/listevent-route";
 import deleteeventRouter from "./event/routes/deleteevent-route";
-import createassignmentRouter from "./assignments/routes/createassignment-route"
-import listassignmentRouter from "./assignments/routes/listassignment-route"
-import deleteassignmentRouter from "./assignments/routes/deleteassignment-route"
+import createassignmentRouter from "./assignment/routes/createassignment-route"
+import listassignmentRouter from "./assignment/routes/listassignment-route"
+import deleteassignmentRouter from "./assignment/routes/deleteassignment-route"
+import createannouncementRouter from "./announcement/routes/createannouncement-route"
+import listannouncementRouter from "./announcement/routes/listannouncement-route"
+import deleteannouncementRouter from "./announcement/routes/deleteannouncement-route"
 import Authentication from "./utils/check-token";
 
 const app = express();
@@ -58,7 +61,7 @@ mongoose
 app.use("/api/pesto/register", registerRouter);
 app.use("/api/pesto/login", loginRouter);
 
-//app.use(Authentication)
+app.use(Authentication)
 
 /*Admin Screen Routers */
 app.use("/api/pesto/list/user", listuserRouter);
@@ -86,10 +89,14 @@ app.use("/api/pesto/list/event", listeventRouter);
 app.use("/api/pesto/delete/event", deleteeventRouter);
 
 /* Assigment Routers */
-app.use("/api/pesto/create/assignments", createassignmentRouter);
-app.use("/api/pesto/list/assignments", listassignmentRouter);
-app.use("/api/pesto/delete/assignments", deleteassignmentRouter);
+app.use("/api/pesto/create/assignment", createassignmentRouter);
+app.use("/api/pesto/list/assignment", listassignmentRouter);
+app.use("/api/pesto/delete/assignment", deleteassignmentRouter);
 
+/* Announcement Routers */
+app.use("/api/pesto/create/announcement", createannouncementRouter);
+app.use("/api/pesto/list/announcement", listannouncementRouter);
+app.use("/api/pesto/delete/announcement", deleteannouncementRouter);
 
 scheduler.start();
 
