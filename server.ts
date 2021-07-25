@@ -1,3 +1,6 @@
+/* This is the entry point of the back-end where Database Connection, Server Establishment,
+ API Route Path  and Authentication middleware are configured */
+
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
@@ -98,7 +101,7 @@ app.use("/api/pesto/create/announcement", createannouncementRouter);
 app.use("/api/pesto/list/announcement", listannouncementRouter);
 app.use("/api/pesto/delete/announcement", deleteannouncementRouter);
 
-scheduler.start();
+//scheduler.start();
 
 const serverListen = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started Successfully");
