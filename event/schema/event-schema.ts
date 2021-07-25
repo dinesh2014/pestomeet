@@ -18,7 +18,7 @@ export interface IEvent {
 export const eventSchema = new mongoose.Schema<IEvent>({
     eventId: { type: String, required: true,default: () => uuidv4()},
     eventName: { type: String, required: true },
-    eventDescription:{ type: String},
+    eventDescription:{type: String},
     eventType: { type: String, required: true },
     eventStart: { type: String, required: true },
     eventEnd: { type: String, required: true },
