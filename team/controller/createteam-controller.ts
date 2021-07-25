@@ -1,5 +1,4 @@
 import teamDB from "../schema/team-schema";
-import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 
 const RegisterteamController = (request: any, response: any) => {

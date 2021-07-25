@@ -1,5 +1,3 @@
-import express from "express";
-import mongoose from "mongoose";
 import assignmentDB from "../schema/assignment-schema";
 import { message } from "../../utils/response-format";
 

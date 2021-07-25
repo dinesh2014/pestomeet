@@ -1,5 +1,4 @@
 import announcementDB from "../schema/announcement-schema";
-import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 
 const CreateAnnouncementController = (request: any, response: any) => {

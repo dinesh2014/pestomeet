@@ -1,6 +1,5 @@
 import userDB from "../../user/schema/user-schema";
 import bcrypt from "bcrypt";
-import { v4 as uuidv4 } from "uuid";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 

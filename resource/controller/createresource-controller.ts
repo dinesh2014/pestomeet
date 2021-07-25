@@ -1,5 +1,4 @@
 import resourceDB from "../schema/resource-schema";
-import { v4 as uuidv4 } from "uuid";
 import { message } from "../../utils/response-format";
 import masterClassUpload from "../../utils/s3-masterclass";
 

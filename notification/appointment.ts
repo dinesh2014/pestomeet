@@ -1,5 +1,4 @@
 import moment from 'moment';
-import mongoose  from 'mongoose';
 import { tz } from 'moment-timezone';
 import eventDB,{eventSchema} from "../event/schema/event-schema";
 import batchDB from "../batch/schema/batch-schema";
