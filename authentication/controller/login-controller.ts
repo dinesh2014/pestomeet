@@ -31,7 +31,7 @@ const LoginController = (request: any, response: any) => {
         const key = process.env.JWT_SECRET as Secret;
         try {
           jwt.sign(
-            { auth: true, name: result.name, id: result.id, role: result.role },
+            { auth: true, name: result.name, id: result.id, role: result.role , user:result },
             key,
             (error: any, token: any) => {
               if (error) {
@@ -57,7 +57,7 @@ const LoginController = (request: any, response: any) => {
         );
       }
     }
-  );
+  )
 };
 
 export default LoginController;

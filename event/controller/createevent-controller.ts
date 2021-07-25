@@ -3,12 +3,14 @@ import { message } from "../../utils/response-format";
 
 
 const EventController = (request: any, response: any) => {
-    const { eventName, eventType, eventStart, eventEnd, organiserId,organiserName,attendees} = request.body;
+    const { eventName, eventType,eventColor, eventStart, eventEnd, hasAssignment,organiserId,organiserName,attendees} = request.body;
     let newEvent = new eventDB({
       eventName: eventName.toLowerCase(),
       eventType: eventType.toLowerCase(),
       eventStart: eventStart,
       eventEnd: eventEnd,
+      eventColor:eventColor,
+      hasAssignment:hasAssignment,
       organiserId: organiserId,
       organiserName:organiserName,
       attendees:attendees
