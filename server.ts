@@ -35,6 +35,7 @@ import deleteassignmentRouter from "./assignment/routes/deleteassignment-route"
 import createannouncementRouter from "./announcement/routes/createannouncement-route"
 import listannouncementRouter from "./announcement/routes/listannouncement-route"
 import deleteannouncementRouter from "./announcement/routes/deleteannouncement-route"
+import listStudents from "./user/routes/liststudents-route"
 import Authentication from "./utils/check-token";
 
 const app = express();
@@ -69,6 +70,7 @@ app.use(Authentication)
 /*Admin Screen Routers */
 app.use("/api/pesto/list/user", listuserRouter);
 app.use("/api/pesto/list/user/all", listalluserRouter);
+app.use("/api/pesto/list/students", listStudents);
 app.use("/api/pesto/edit/user", edituserRouter);
 app.use("/api/pesto/delete/user", deleteuserRouter);
 app.use("/api/pesto/list/team", listteamRouter);

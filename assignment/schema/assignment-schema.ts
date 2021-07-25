@@ -21,7 +21,7 @@ const assignmentSchema = new mongoose.Schema<IAssignment>({
   uploaderName: { type: String, required: true },
   eventID: { type: String, required: true },
   eventName: { type: String, required: true },
-  eventType: { type: String, require: true },
+  eventType: { type: String, required: true },
   assignmentLinks:{type:Array, require: true },
   lastupdateTime: { type: Date, default: Date.now },
 });

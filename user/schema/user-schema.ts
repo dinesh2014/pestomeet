@@ -23,9 +23,9 @@ const userSchema = new mongoose.Schema<IUser>({
   phone: { type: Number, required: true },
   calendlyLink:{type: String},
   role: { type: String, required: true },
-  password: { type: String, require: true },
-  experience: { type: String, require: true },
-  approval: { type: String, require: true },
+  password: { type: String, required: true },
+  experience: { type: String, required: true },
+  approval: { type: String, required: true },
 });
 
 const userModel = mongoose.model(DB_USER_MODEL, userSchema);

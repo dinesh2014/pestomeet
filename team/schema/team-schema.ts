@@ -18,7 +18,7 @@ const teamSchema = new mongoose.Schema<ITeam>({
   teamId: { type: String, required: true,default: () => uuidv4()},
   teamName: { type: String, required: true },
   teamType: { type: String, required: true },
-  mentorId: { type: String, require: true },
+  mentorId: { type: String, required: true },
   mentorName: { type: String, required: true },
   teamMembers: { type: Array, required: true },
   lastupdateTime: { type: Date, default: Date.now },
