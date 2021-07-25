@@ -2,6 +2,7 @@ import userDB from "../schema/user-schema";
 import batchDB from "../../batch/schema/batch-schema";
 import teamDB from "../../team/schema/team-schema";
 import { message } from "../../utils/response-format";
+import { AnyARecord } from "dns";
 
 const ListuserController = (request: any, response: any) => {
   const userID = request.params.userID;
@@ -32,12 +33,12 @@ const ListuserController = (request: any, response: any) => {
                 } else if (result.length == 0) {
                   response.json(message("No Student Found", null, false))
                 }else{
-                    let students = result.map((member:any)=>{
-                       return member.batchMembers[0]
-                    })
-                    students = students.filter((v:any,i:any,a:any)=>a.findIndex((t:any)=>(JSON.stringify(t) === JSON.stringify(v)))===i)
-
-                    response.json(message("Students Reterived", students, true))
+                  let student = result.map((member:any,index:any)=>{
+                    return member.batchMembers; 
+                })
+                let students = [].concat.apply([], student);
+                students = students.filter((v:any,i:any,a:any)=>a.findIndex((t:any)=>(JSON.stringify(t) === JSON.stringify(v)))===i)
+                response.json(message("Students Reterived", students, true))
                 }
             });
         }else if (result.role == "mentor"){
@@ -47,9 +48,11 @@ const ListuserController = (request: any, response: any) => {
                 } else if (result.length == 0) {
                   response.json(message("No Student Found", null, false))
                 }else{
-                    let students = result.map((member:any)=>{
-                        return member.teamMembers[0]
-                    })
+                    let student = result.map((member:any,index:any)=>{
+                               return member.teamMembers; 
+                         })
+
+                    let students = [].concat.apply([], student);
                     students = students.filter((v:any,i:any,a:any)=>a.findIndex((t:any)=>(JSON.stringify(t) === JSON.stringify(v)))===i)
                     response.json(message("Students Reterived", students, true))
                 }
