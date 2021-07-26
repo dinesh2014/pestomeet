@@ -4,10 +4,9 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import scheduler from './notification/scheduler';
+//import scheduler from './notification/scheduler';
 import registerRouter from "./authentication/routes/register-route";
 import loginRouter from "./authentication/routes/login-route";
 import edituserRouter from "./user/routes/edituser-route";
