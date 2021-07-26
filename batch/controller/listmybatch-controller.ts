@@ -2,6 +2,9 @@ import userDB from "../../user/schema/user-schema";
 import batchDB from "../../batch/schema/batch-schema";
 import { message } from "../../utils/response-format";
 
+/* This module serves as the controller for the API "api/pesto/list/mybatch/" which get userID
+as a params and list batches based on userrole */
+
 const ListMyBatchController = (request: any, response: any) => {
   const userID = request.params.userID;
   userDB
