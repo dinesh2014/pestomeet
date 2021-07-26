@@ -12,7 +12,7 @@ const ListuserController = (request: any, response: any) => {
       (errors: any, result: any) => {
         if (errors) {
           response.json(message("Error while reteriving user", errors, false));
-        } else if (result.length == 0) {
+        } else if (result == null) {
           response.json(
             message("No User Found", null, false)
           );
