@@ -40,7 +40,7 @@
     "prettier": "2.3.2"
   },
   "scripts": {
-    "start": "tsc && node --max_old_space_size=2560 --es-module-specifier-resolution=node --unhandled-rejections=strict ./dist/server.js",
+    "start": "tsc && node --inspect --max_old_space_size=3560 --es-module-specifier-resolution=node --unhandled-rejections=strict ./dist/server.js",
     "debug": "export DEBUG=* && npm run start"
   },
   "author": "",
