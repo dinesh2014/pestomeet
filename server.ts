@@ -28,6 +28,7 @@ import createresourceRouter from "./resource/routes/createresource-route";
 import deleteresourceRouter from "./resource/routes/deleteresource-route";
 import listresourceRouter from "./resource/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
+import listmyeventRouter from "./event/routes/listmyevent-route";
 import listeventRouter from "./event/routes/listevent-route";
 import deleteeventRouter from "./event/routes/deleteevent-route";
 import createassignmentRouter from "./assignment/routes/createassignment-route"
@@ -91,9 +92,10 @@ app.use("/api/pesto/resource/upload", createresourceRouter);
 app.use("/api/pesto/resource/delete", deleteresourceRouter);
 app.use("/api/pesto/resource/list", listresourceRouter);
 
-/*Event  Upload Routers*/
+/*Event Routers*/
 app.use("/api/pesto/create/event", createeventRouter);
 app.use("/api/pesto/list/event", listeventRouter);
+app.use("/api/pesto/list/myevent", listmyeventRouter);
 app.use("/api/pesto/delete/event", deleteeventRouter);
 
 /* Assigment Routers */
