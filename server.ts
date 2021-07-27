@@ -38,6 +38,7 @@ import createannouncementRouter from "./announcement/routes/createannouncement-r
 import listannouncementRouter from "./announcement/routes/listannouncement-route"
 import deleteannouncementRouter from "./announcement/routes/deleteannouncement-route"
 import listStudents from "./user/routes/liststudents-route"
+import countmyassetsRouter from "./user/routes/countmyassets-route"
 import Authentication from "./utils/check-token";
 
 const app = express();
@@ -107,6 +108,9 @@ app.use("/api/pesto/delete/assignment", deleteassignmentRouter);
 app.use("/api/pesto/create/announcement", createannouncementRouter);
 app.use("/api/pesto/list/announcement", listannouncementRouter);
 app.use("/api/pesto/delete/announcement", deleteannouncementRouter);
+
+/* Count Routers */
+app.use("/api/pesto/count/myassets", countmyassetsRouter);
 
 //scheduler.start();
 
