@@ -9,6 +9,7 @@ interface ITeam {
   teamName: string;
   teamType: string;
   batchId:string,
+  batchOwnerID:string,
   mentorId: string;
   mentorName: string;
   teamMembers: Array<Object>;
@@ -20,6 +21,7 @@ const teamSchema = new mongoose.Schema<ITeam>({
   teamName: { type: String, required: true },
   teamType: { type: String, required: true },
   batchId:  {type:String,required:true},
+  batchOwnerID:{type:String,required:true},
   mentorId: { type: String, required: true },
   mentorName: { type: String, required: true },
   teamMembers: { type: Array, required: true },
