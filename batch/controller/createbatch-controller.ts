@@ -3,11 +3,12 @@ import { message } from "../../utils/response-format";
 
 
 const CreatebatchController = (reqest: any, response: any) => {
-  const { batchName, batchType, batchOwner, batchMembers } = reqest.body;
+  const { batchName, batchType, batchOwnerID,batchOwner, batchMembers } = reqest.body;
   const newBatch = new batchDB({
     batchName: batchName.toLowerCase(),
     batchType: batchType,
     batchOwner: batchOwner,
+    batchOwnerID:batchOwnerID,
     batchMembers: batchMembers,
   });
 
