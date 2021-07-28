@@ -9,7 +9,7 @@ const DeleteteamController = (request: any, response: any) => {
     } else if (!docs) {
       response.json(message("batch Not Found", docs, true));
     } else {
-      response.json(message("batch deleted successfully", docs, false));
+      response.json(message("batch deleted successfully", docs, true));
     }
   });
 };

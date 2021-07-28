@@ -10,6 +10,7 @@ export interface IEvent {
   eventStart:Date;
   eventEnd:Date;
   eventColor:String;
+  resourceCount:Number;
   attendees: Array<Object>;
   hasAssignment:Boolean;
   lastupdateTime:Date ;
@@ -26,6 +27,7 @@ export const eventSchema = new mongoose.Schema<IEvent>({
     organiserId:{ type: String, required: true },
     organiserName:{ type: String, required: true },
     attendees: { type: Array, required: true},
+    resourceCount:{ type: Number},
     hasAssignment:{ type: Boolean, required: true},
     lastupdateTime: { type: Date, default: Date.now },
 });

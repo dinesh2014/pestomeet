@@ -32,7 +32,7 @@ const DeleteresourceController = (request: any, response: any) => {
                     );
                   } else {
                     response.json(
-                      message("Resource deleted Successfully", errors, false)
+                      message("Resource deleted Successfully", errors, true)
                     );
                   }
                 }

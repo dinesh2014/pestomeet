@@ -7,9 +7,9 @@ const DeleteeventController = (request: any, response: any) => {
     if (errors) {
       response.json(message("Error while deleting event", null, false));
     } else if (!docs) {
-      response.json(message("Event Not Found", docs, true));
+      response.json(message("Event Not Found", docs, false));
     } else {
-      response.json(message("Event deleted successfully", docs, false));
+      response.json(message("Event deleted successfully", docs, true));
     }
   });
 };

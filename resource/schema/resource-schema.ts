@@ -7,7 +7,7 @@ interface IResource {
   resourceName: string;
   uploaderId: string;
   uploaderName: string;
-  eventID: string;
+  eventId: string;
   eventName: string;
   eventType: string;
   resource: string;
@@ -21,7 +21,7 @@ const resourceSchema = new mongoose.Schema<IResource>({
   resourceName: { type: String, required: true },
   uploaderId: { type: String, required: true },
   uploaderName: { type: String, required: true },
-  eventID: { type: String, required: true },
+  eventId: { type: String, required: true },
   eventName: { type: String, required: true },
   eventType: { type: String, require: true },
   resource: { type: String, required: true },
