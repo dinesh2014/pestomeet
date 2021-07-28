@@ -26,7 +26,7 @@ const ApprovalController = (request: any, response: any) => {
       } else if (doc == null) {
         response.json(message("Couldn't Find the Batch", null, true));
       } else {
-        response.json(message("Batch updated successfully", null, false));
+        response.json(message("Batch updated successfully", null, true));
       }
     }
   );
