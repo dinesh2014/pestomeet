@@ -31,14 +31,15 @@ import createeventRouter from "./event/routes/createevent-route";
 import listmyeventRouter from "./event/routes/listmyevent-route";
 import listeventRouter from "./event/routes/listevent-route";
 import deleteeventRouter from "./event/routes/deleteevent-route";
-import createassignmentRouter from "./assignment/routes/createassignment-route"
-import listassignmentRouter from "./assignment/routes/listassignment-route"
-import deleteassignmentRouter from "./assignment/routes/deleteassignment-route"
-import createannouncementRouter from "./announcement/routes/createannouncement-route"
-import listannouncementRouter from "./announcement/routes/listannouncement-route"
-import deleteannouncementRouter from "./announcement/routes/deleteannouncement-route"
-import listStudents from "./user/routes/liststudents-route"
-import countmyassetsRouter from "./user/routes/countmyassets-route"
+import bookeventRouter from "./event/routes/bookevent-route";
+import createassignmentRouter from "./assignment/routes/createassignment-route";
+import listassignmentRouter from "./assignment/routes/listassignment-route";
+import deleteassignmentRouter from "./assignment/routes/deleteassignment-route";
+import createannouncementRouter from "./announcement/routes/createannouncement-route";
+import listannouncementRouter from "./announcement/routes/listannouncement-route";
+import deleteannouncementRouter from "./announcement/routes/deleteannouncement-route";
+import listStudents from "./user/routes/liststudents-route";
+import countmyassetsRouter from "./user/routes/countmyassets-route";
 import Authentication from "./utils/check-token";
 
 const app = express();
@@ -98,6 +99,7 @@ app.use("/api/pesto/create/event", createeventRouter);
 app.use("/api/pesto/list/event", listeventRouter);
 app.use("/api/pesto/list/myevent", listmyeventRouter);
 app.use("/api/pesto/delete/event", deleteeventRouter);
+app.use("/api/pesto/book/event", bookeventRouter);
 
 /* Assigment Routers */
 app.use("/api/pesto/create/assignment", createassignmentRouter);

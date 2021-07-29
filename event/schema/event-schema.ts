@@ -31,7 +31,7 @@ export const eventSchema : any = new mongoose.Schema<IEvent>({
     attendees: { type: Array ,required: function isSlot(this:typeof eventSchema){
       return this.eventType != 'slot'
     }},
-    hasBooked:{ type: Boolean},
+    hasBooked:{ type: Boolean,default: false },
     resourceCount:{ type: Number},
     hasAssignment:{ type: Boolean, required:function isSlot(this:typeof eventSchema){
       return this.eventType != 'slot'
