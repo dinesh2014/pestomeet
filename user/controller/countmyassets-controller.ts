@@ -43,10 +43,18 @@ const CountMyAssetsController = (request: any, response: any) => {
                     return member.batchMembers; 
                 })
                 student = [].concat.apply([], student);
-                let studentDetails= student.filter((v:any,i:any,a:any)=>a.findIndex((t:any)=>(JSON.stringify(t) === JSON.stringify(v)))===i)
+                let userDetails= student.filter((v:any,i:any,a:any)=>a.findIndex((t:any)=>(JSON.stringify(t) === JSON.stringify(v)))===i)
+                let studentDetails = userDetails.filter((item:any)=>{
+                  return item.role ==='student'
+                })
+                let mentorDetails = userDetails.filter((item:any)=>{
+                  return item.role ==='mentor'
+                })
                 let studentCount = studentDetails.length
+                let mentorCount = mentorDetails.length
                 let countDetails = {
                     studentCount:studentCount,
+                    mentorCount:mentorCount,
                     batchCount:batchCount,
                     teamCount:teamCount
                 };
