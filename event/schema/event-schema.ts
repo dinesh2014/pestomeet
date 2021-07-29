@@ -1,3 +1,4 @@
+import { AnyARecord } from "dns";
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 import { DB_EVENT_MODEL } from "../../utils/app-constants";
@@ -13,10 +14,11 @@ export interface IEvent {
   resourceCount:Number;
   attendees: Array<Object>;
   hasAssignment:Boolean;
+  hasBooked:Boolean,
   lastupdateTime:Date ;
 }
 
-export const eventSchema = new mongoose.Schema<IEvent>({
+export const eventSchema : any = new mongoose.Schema<IEvent>({
     eventId: { type: String, required: true,default: () => uuidv4()},
     eventName: { type: String, required: true },
     eventDescription:{type: String},
@@ -26,11 +28,20 @@ export const eventSchema = new mongoose.Schema<IEvent>({
     eventColor:{ type: String, required: true },
     organiserId:{ type: String, required: true },
     organiserName:{ type: String, required: true },
-    attendees: { type: Array, required: true},
+    attendees: { type: Array ,required: function isSlot(this:typeof eventSchema){
+      return this.eventType != 'slot'
+    }},
+    hasBooked:{ type: Boolean},
     resourceCount:{ type: Number},
-    hasAssignment:{ type: Boolean, required: true},
+    hasAssignment:{ type: Boolean, required:function isSlot(this:typeof eventSchema){
+      return this.eventType != 'slot'
+    }},
     lastupdateTime: { type: Date, default: Date.now },
 });
+
+function isSlot(this:typeof eventSchema){
+     
+}
 
 const eventModel = mongoose.model(DB_EVENT_MODEL, eventSchema);
 export default eventModel;
