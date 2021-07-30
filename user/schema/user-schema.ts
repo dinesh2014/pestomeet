@@ -11,7 +11,6 @@ interface IUser {
   password: string;
   role: String;
   experience: Number;
-  calendlyLink:String;
   approval: String;
 }
 
@@ -21,7 +20,6 @@ const userSchema = new mongoose.Schema<IUser>({
   avatar: { type: String },
   email: { type: String, required: true },
   phone: { type: Number, required: true },
-  calendlyLink:{type: String},
   role: { type: String, required: true },
   password: { type: String, required: true },
   experience: { type: String, required: true },

@@ -11,11 +11,13 @@ export interface IEvent {
   eventStart:Date;
   eventEnd:Date;
   eventColor:String;
+  organiserId:String;
   resourceCount:Number;
   attendees: Array<Object>;
   hasAssignment:Boolean;
   hasBooked:Boolean,
   lastupdateTime:Date ;
+  createTime: Date
 }
 
 export const eventSchema : any = new mongoose.Schema<IEvent>({
@@ -27,7 +29,6 @@ export const eventSchema : any = new mongoose.Schema<IEvent>({
     eventEnd: { type: String, required: true },
     eventColor:{ type: String, required: true },
     organiserId:{ type: String, required: true },
-    organiserName:{ type: String, required: true },
     attendees: { type: Array ,required: function isSlot(this:typeof eventSchema){
       return this.eventType != 'slot'
     }},
@@ -37,6 +38,7 @@ export const eventSchema : any = new mongoose.Schema<IEvent>({
       return this.eventType != 'slot'
     }},
     lastupdateTime: { type: Date, default: Date.now },
+    createTime: {type:Date}
 });
 
 function isSlot(this:typeof eventSchema){

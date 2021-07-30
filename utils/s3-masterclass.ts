@@ -13,6 +13,7 @@ interface Callback<T> {
 const masterClassUpload = multer({
   storage: multerS3({
     s3: S3,
+    acl: 'public-read',
     bucket: BUCKET,
     key: function (req: any, file, cb: Callback<string>) {
       cb(

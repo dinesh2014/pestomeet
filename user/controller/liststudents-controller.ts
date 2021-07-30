@@ -2,7 +2,6 @@ import userDB from "../schema/user-schema";
 import batchDB from "../../batch/schema/batch-schema";
 import teamDB from "../../team/schema/team-schema";
 import { message } from "../../utils/response-format";
-import { AnyARecord } from "dns";
 
 const ListuserController = (request: any, response: any) => {
   const userID = request.params.userID;

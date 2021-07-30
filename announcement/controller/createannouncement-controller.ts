@@ -5,7 +5,8 @@ const CreateAnnouncementController = (request: any, response: any) => {
   const { announcementName ,announcementDescription} = request.body;
   let newAnnouncement = new announcementDB({
     announcementName: announcementName.toLowerCase(),
-    announcementDescription:announcementDescription
+    announcementDescription:announcementDescription,
+    createTime: Date.now()
   });
 
   announcementDB.findOne(

@@ -6,11 +6,10 @@ const RegisterteamController = (request: any, response: any) => {
   let newAssignment = new assignmentDB({
     assignmentName: assignmentName.toLowerCase(),
     uploaderId: uploaderId,
-    uploaderName: uploaderName,
     eventID: eventID,
-    eventName: eventName,
     eventType:eventType,
     assignmentLinks:assignmentLinks,
+    createTime: Date.now()
   });
 
   assignmentDB.findOne(

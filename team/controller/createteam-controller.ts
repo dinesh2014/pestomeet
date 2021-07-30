@@ -9,8 +9,8 @@ const RegisterteamController = (request: any, response: any) => {
     batchId:batchId,
     mentorId: mentorId,
     batchOwnerID:batchOwnerID,
-    mentorName: mentorName,
     teamMembers: teamMembers,
+    createTime: Date.now()
   });
 
   teamDB.findOne(

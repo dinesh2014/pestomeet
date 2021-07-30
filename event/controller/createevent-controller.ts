@@ -13,8 +13,8 @@ const EventController = (request: any, response: any) => {
       eventDescription:eventDescription,
       hasAssignment:hasAssignment,
       organiserId: organiserId,
-      organiserName:organiserName,
-      attendees:attendees
+      attendees:attendees,
+      createTime: Date.now()
     });
   
     eventDB.findOne(

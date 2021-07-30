@@ -11,9 +11,10 @@ interface ITeam {
   batchId:string,
   batchOwnerID:string,
   mentorId: string;
-  mentorName: string;
   teamMembers: Array<Object>;
   lastupdateTime: { type: Date };
+  createTime: Date
+  
 }
 
 const teamSchema = new mongoose.Schema<ITeam>({
@@ -23,9 +24,9 @@ const teamSchema = new mongoose.Schema<ITeam>({
   batchId:  {type:String,required:true},
   batchOwnerID:{type:String,required:true},
   mentorId: { type: String, required: true },
-  mentorName: { type: String, required: true },
   teamMembers: { type: Array, required: true },
   lastupdateTime: { type: Date, default: Date.now },
+  createTime: {type:Date}
 });
 
 const teamModel = mongoose.model(DB_TEAM_MODEL, teamSchema);

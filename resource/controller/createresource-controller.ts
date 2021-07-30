@@ -26,13 +26,12 @@ const ResourceController = (request: any, response: any) => {
         const newBatch = new resourceDB({
           resourceName: resourceName.toLowerCase(),
           uploaderId: uploaderId,
-          uploaderName: uploaderName.toLowerCase(),
           eventId: eventId,
           resourceLinks:resourceLinks,
-          eventName: eventName.toLowerCase(),
           eventType: eventType.toLowerCase(),
           resourceKey: resourceKey,
           resource: resource,
+          createTime: Date.now()
         });
         resourceDB.findOne(
           { resourceKey: resourceKey },

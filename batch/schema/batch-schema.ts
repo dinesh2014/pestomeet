@@ -9,7 +9,8 @@ interface IBatch {
   batchOwner: string;
   batchOwnerID:string;
   batchMembers: Array<Object>;
-  lastupdateTime: { type: Date };
+  lastupdateTime: Date ;
+  createTime: Date 
 }
 
 const batchSchema = new mongoose.Schema<IBatch>({
@@ -20,6 +21,7 @@ const batchSchema = new mongoose.Schema<IBatch>({
   batchOwnerID: { type: String, required: true },
   batchMembers: { type: Array, required: true },
   lastupdateTime: { type: Date, default: Date.now },
+  createTime: {type:Date}
 });
 const batchModel = mongoose.model(DB_BATCH_MODEL, batchSchema);
 export default batchModel;
