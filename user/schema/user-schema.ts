@@ -12,6 +12,8 @@ interface IUser {
   role: String;
   experience: Number;
   approval: String;
+  lastupdateTime: { type: Date };
+  createTime: Date
 }
 
 const userSchema = new mongoose.Schema<IUser>({
@@ -24,6 +26,8 @@ const userSchema = new mongoose.Schema<IUser>({
   password: { type: String, required: true },
   experience: { type: String, required: true },
   approval: { type: String, required: true },
+  lastupdateTime: { type: Date, default: Date.now },
+  createTime: {type:Date}
 });
 
 const userModel = mongoose.model(DB_USER_MODEL, userSchema);

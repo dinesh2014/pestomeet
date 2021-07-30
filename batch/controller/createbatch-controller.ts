@@ -10,6 +10,7 @@ const CreatebatchController = (reqest: any, response: any) => {
     batchOwner: batchOwner,
     batchOwnerID:batchOwnerID,
     batchMembers: batchMembers,
+    createTime: Date.now()
   });
 
   batchDB.findOne(
