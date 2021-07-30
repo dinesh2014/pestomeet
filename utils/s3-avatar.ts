@@ -19,11 +19,7 @@ const profileImgUpload = multer({
         null,
         PROFILE_FOLDER +
           "/" +
-          req.body.resourceName +
-          "_" +
-          req.body.uploaderId +
-          "_" +
-          req.body.eventID +
+          req.params.id+
           path.extname(file.originalname)
             );
     },
