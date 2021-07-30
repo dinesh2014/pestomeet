@@ -14,14 +14,18 @@ const profileImgUpload = multer({
   storage: multerS3({
     s3: S3,
     bucket: "pestomeet-recordings",
-    key: function (req, file, cb: Callback<string>) {
+    key: function (req:any, file, cb: Callback<string>) {
       cb(
         null,
         PROFILE_FOLDER +
           "/" +
-          path.basename(file.originalname, path.extname(file.originalname)) +
+          req.body.resourceName +
+          "_" +
+          req.body.uploaderId +
+          "_" +
+          req.body.eventID +
           path.extname(file.originalname)
-      );
+            );
     },
   }),
   limits: { fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
