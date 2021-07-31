@@ -2,7 +2,7 @@ import assignmentDB from "../schema/assignment-schema";
 import { message } from "../../utils/response-format";
 
 const RegisterteamController = (request: any, response: any) => {
-  const { assignmentName, uploaderId, uploaderName, eventID, eventName,eventType,assignmentLinks} = request.body;
+  const { assignmentName, uploaderId,eventID,eventType,assignmentLinks} = request.body;
   let newAssignment = new assignmentDB({
     assignmentName: assignmentName.toLowerCase(),
     uploaderId: uploaderId,

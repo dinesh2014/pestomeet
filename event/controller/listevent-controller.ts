@@ -4,8 +4,7 @@ import { message } from "../../utils/response-format";
 const ListeventController = (request: any, response: any) => {
   const eventType = request.params.type;
   eventDB.find(
-    { eventType: eventType.toLowerCase() },
-    (errors: any, result: any) => {
+    { eventType: eventType.toLowerCase() }).populate("organiserDetail").exec((errors: any, result: any) => {
       if (errors) {
         response.json(message("Error while reteriving event", errors, false));
       } else if (result.length == 0) {

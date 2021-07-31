@@ -59,7 +59,7 @@ const ListMyEventController = (request: any, response: any) => {
                       attendees:items.attendees,
                     }
                   })
-                  response.json(message("Students Reterived", events, true))
+                  response.json(message("Events Reterived", events, true))
                 }
             });
         }else if (result.role == "mentor"){
@@ -83,7 +83,7 @@ const ListMyEventController = (request: any, response: any) => {
                       attendees:items.attendees,
                     }
                   })
-                  response.json(message("Students Reterived", events, true))
+                  response.json(message("Events Reterived", events, true))
                 }
                    
             });
