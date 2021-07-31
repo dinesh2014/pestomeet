@@ -20,6 +20,9 @@ const assignmentSchema = new mongoose.Schema<IAssignment>({
   assignmentLinks:{type:Array, require: true },
   lastupdateTime: { type: Date, default: Date.now },
   createTime: { type: Date},
+},{
+  toJSON: { virtuals: true }, 
+  toObject: { virtuals: true } 
 });
 
 assignmentSchema.virtual('uploaderDetail', {

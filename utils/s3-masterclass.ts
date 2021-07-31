@@ -24,7 +24,8 @@ const masterClassUpload = multer({
           "_" +
           req.body.uploaderId +
           "_" +
-          req.body.eventID +
+          req.body.eventId
+           +
           path.extname(file.originalname)
       );
     },

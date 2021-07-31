@@ -1,5 +1,6 @@
 import eventDB from "../schema/event-schema";
 import { message } from "../../utils/response-format";
+import { truncate } from "node:fs/promises";
 
 
 const EventController = (request: any, response: any) => {
@@ -33,7 +34,7 @@ const EventController = (request: any, response: any) => {
             if (error) {
               response.json({ message: error });
             } else {
-              response.json(message("Event created Successfully", null, false));
+              response.json(message("Event created Successfully", null, true));
             }
           });
         } else {

@@ -1,7 +1,5 @@
 import eventDB from "../schema/event-schema";
 import userDB from "../../user/schema/user-schema";
-import batchDB from "../../batch/schema/batch-schema";
-import teamDB from "../../team/schema/team-schema";
 import { message } from "../../utils/response-format";
 
 const ListMyEventController = (request: any, response: any) => {
@@ -17,7 +15,7 @@ const ListMyEventController = (request: any, response: any) => {
             message("No User Found", null, false)
           );
         } else if(result.role == "super admin") {
-            eventDB.find({}).populate("organiserDetail").exec((errors: any, result: any) => {
+            eventDB.find({}).populate("organiserDetail").exec(function(errors: any, result: any){
                 if (errors) {
                   response.json(message("Error while reteriving Events", errors, false));
                 } else if (result.length == 0) {
@@ -37,7 +35,7 @@ const ListMyEventController = (request: any, response: any) => {
                       attendees:items.attendees,
                     }
                   })
-                    response.json(message("Events Reterived", events, true))
+                  response.json(message("Events Reterived", events, true))
                 }
             })
         }else if (result.role == "admin"){

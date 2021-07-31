@@ -39,12 +39,15 @@ export const eventSchema : any = new mongoose.Schema<IEvent>({
     }},
     lastupdateTime: { type: Date, default: Date.now },
     createTime: {type:Date}
+},{
+  toJSON: { virtuals: true }, 
+  toObject: { virtuals: true } 
 });
 
 eventSchema.virtual('organiserDetail', {
-  ref:DB_USER_MODEL ,
-  localField: 'organiserId',
-  foreignField: 'id', 
+  ref:DB_USER_MODEL,
+  localField:'organiserId',
+  foreignField:'id', 
   justOne: true
 });
 
