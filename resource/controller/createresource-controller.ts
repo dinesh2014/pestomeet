@@ -17,9 +17,7 @@ const ResourceController = (request: any, response: any) => {
         const {
           resourceName,
           uploaderId,
-          uploaderName,
           eventId,
-          eventName,
           resourceLinks,
           eventType,
         } = request.body;

@@ -17,43 +17,100 @@ const ListMyEventController = (request: any, response: any) => {
             message("No User Found", null, false)
           );
         } else if(result.role == "super admin") {
-            eventDB.find({},(errors: any, result: any) => {
+            eventDB.find({}).populate("organiserDetail").exec((errors: any, result: any) => {
                 if (errors) {
                   response.json(message("Error while reteriving Events", errors, false));
                 } else if (result.length == 0) {
                   response.json(message("No Events Found", null, false))
                 }else{
-                    response.json(message("Events Reterived", result, true))
+                  let events = result.map((items)=>{
+                    return {
+                      eventName: items.eventName,
+                      eventType: items.eventType,
+                      eventStart: items.eventStart,
+                      eventEnd: items.eventEnd,
+                      eventColor:items.eventColor,
+                      eventDescription:items.eventDescription,
+                      hasAssignment:items.hasAssignment,
+                      organiserId: items.organiserId,
+                      organiserName:items.organiserDetail.name,
+                      attendees:items.attendees,
+                    }
+                  })
+                    response.json(message("Events Reterived", events, true))
                 }
             })
         }else if (result.role == "admin"){
-            eventDB.find({organiserId:userID},(errors: any, result: any) => {
+            eventDB.find({organiserId:userID}).populate("organiserDetail").exec((errors: any, result: any) => {
                 if (errors) {
                   response.json(message("Error while reteriving Events", errors, false));
                 } else if (result.length == 0) {
                   response.json(message("No Events Found", null, false))
                 }else{
-                  response.json(message("Students Reterived", result, true))
+                  let events = result.map((items)=>{
+                    return {
+                      eventName: items.eventName,
+                      eventType: items.eventType,
+                      eventStart: items.eventStart,
+                      eventEnd: items.eventEnd,
+                      eventColor:items.eventColor,
+                      eventDescription:items.eventDescription,
+                      hasAssignment:items.hasAssignment,
+                      organiserId: items.organiserId,
+                      organiserName:items.organiserDetail.name,
+                      attendees:items.attendees,
+                    }
+                  })
+                  response.json(message("Students Reterived", events, true))
                 }
             });
         }else if (result.role == "mentor"){
-            eventDB.find({organiserId:userID},(errors: any, result: any) => {
+            eventDB.find({organiserId:userID}).populate("organiserDetail").exec((errors: any, result: any) => {
                 if (errors) {
                   response.json(message("Error while reteriving Events", errors, false));
                 } else if (result.length == 0) {
                   response.json(message("No Events Found", null, false))
                 }else{
-                    response.json(message("Events Reterived",result, true))
+                  let events = result.map((items)=>{
+                    return {
+                      eventName: items.eventName,
+                      eventType: items.eventType,
+                      eventStart: items.eventStart,
+                      eventEnd: items.eventEnd,
+                      eventColor:items.eventColor,
+                      eventDescription:items.eventDescription,
+                      hasAssignment:items.hasAssignment,
+                      organiserId: items.organiserId,
+                      organiserName:items.organiserDetail.name,
+                      attendees:items.attendees,
+                    }
+                  })
+                  response.json(message("Students Reterived", events, true))
                 }
+                   
             });
         }else{
-            eventDB.find({attendees:{$elemMatch:{batchMember:{$elemMatch:{id:userID}}}}},(errors: any, result: any) => {
+            eventDB.find({attendees:{$elemMatch:{batchMember:{$elemMatch:{id:userID}}}}}).populate("organiserDetail").exec((errors: any, result: any) => {
                 if (errors) {
                   response.json(message("Error while reteriving Events", errors, false));
                 } else if (result.length == 0) {
                   response.json(message("No Events Found", null, false))
                 }else{
-                   response.json(message("Events Reterived", result, false));
+                  let events = result.map((items)=>{
+                    return {
+                      eventName: items.eventName,
+                      eventType: items.eventType,
+                      eventStart: items.eventStart,
+                      eventEnd: items.eventEnd,
+                      eventColor:items.eventColor,
+                      eventDescription:items.eventDescription,
+                      hasAssignment:items.hasAssignment,
+                      organiserId: items.organiserId,
+                      organiserName:items.organiserDetail.name,
+                      attendees:items.attendees,
+                    }
+                  })
+                   response.json(message("Events Reterived", events, true));
                 }
             });
         }

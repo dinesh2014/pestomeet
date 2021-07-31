@@ -13,7 +13,7 @@ interface IBatch {
   createTime: Date 
 }
 
-const batchSchema = new mongoose.Schema<IBatch>({
+export const batchSchema = new mongoose.Schema<IBatch>({
   batchId: { type: String, required: true,default: () => uuidv4() },
   batchName: { type: String, required: true },
   batchType: { type: String, required: true },

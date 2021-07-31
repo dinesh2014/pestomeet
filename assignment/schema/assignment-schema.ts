@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DB_ASSIGNMENT_MODEL } from "../../utils/app-constants";
+import { DB_ASSIGNMENT_MODEL,DB_USER_MODEL} from "../../utils/app-constants";
 import { v4 as uuidv4 } from "uuid";
 
 interface IAssignment {
@@ -20,6 +20,13 @@ const assignmentSchema = new mongoose.Schema<IAssignment>({
   assignmentLinks:{type:Array, require: true },
   lastupdateTime: { type: Date, default: Date.now },
   createTime: { type: Date},
+});
+
+assignmentSchema.virtual('uploaderDetail', {
+  ref:DB_USER_MODEL ,
+  localField: 'uploaderId',
+  foreignField: 'id', 
+  justOne: true
 });
 
 const assignmentModel = mongoose.model(DB_ASSIGNMENT_MODEL, assignmentSchema);

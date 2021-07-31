@@ -13,10 +13,24 @@ const ListeventController = (request: any, response: any) => {
           message("No " + String(eventType) + " Event found", null, false)
         );
       } else {
+        let events = result.map((items)=>{
+          return {
+            eventName: items.eventName,
+            eventType: items.eventType,
+            eventStart: items.eventStart,
+            eventEnd: items.eventEnd,
+            eventColor:items.eventColor,
+            eventDescription:items.eventDescription,
+            hasAssignment:items.hasAssignment,
+            organiserId: items.organiserId,
+            organiserName:items.organiserDetail.name,
+            attendees:items.attendees,
+          }
+        })
         response.json(
           message(
             String(result.length) + " " + String(eventType) + " Event Found",
-            result,
+            events,
             true
           )
         );

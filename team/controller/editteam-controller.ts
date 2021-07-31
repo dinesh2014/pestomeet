@@ -14,7 +14,6 @@ const ApprovalController = (request: any, response: any) => {
     teamName: teamName.toLowerCase(),
     teamType: teamType,
     mentorId: mentorId,
-    mentorName: mentorName,
     teamMembers: teamMembers,
   };
   const doc = teamDB.findOneAndUpdate(

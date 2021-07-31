@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DB_RESOURCE_MODEL } from "../../utils/app-constants";
+import { DB_RESOURCE_MODEL,DB_USER_MODEL,DB_EVENT_MODEL} from "../../utils/app-constants";
 import { v4 as uuidv4 } from "uuid";
 
 interface IResource {
@@ -24,6 +24,24 @@ const resourceSchema = new mongoose.Schema<IResource>({
   resourceKey: { type: String, required: true },
   lastupdateTime: { type: Date, default: Date.now },
   createTime: {type:Date}
+},{
+  toJSON: { virtuals: true }, 
+  toObject: { virtuals: true } 
+});
+
+
+resourceSchema.virtual('eventDetail', {
+  ref: DB_EVENT_MODEL,
+  localField: 'eventId',
+  foreignField: 'eventId', 
+  justOne: true 
+});
+
+resourceSchema.virtual('uploaderDetail', {
+  ref:DB_USER_MODEL ,
+  localField: 'uploaderId',
+  foreignField: 'id', 
+  justOne: true
 });
 
 const resourceModel = mongoose.model(DB_RESOURCE_MODEL, resourceSchema);

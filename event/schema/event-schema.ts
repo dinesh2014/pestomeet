@@ -1,7 +1,7 @@
 import { AnyARecord } from "dns";
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
-import { DB_EVENT_MODEL } from "../../utils/app-constants";
+import { DB_EVENT_MODEL,DB_USER_MODEL } from "../../utils/app-constants";
 
 export interface IEvent {
   eventId: string;
@@ -39,6 +39,13 @@ export const eventSchema : any = new mongoose.Schema<IEvent>({
     }},
     lastupdateTime: { type: Date, default: Date.now },
     createTime: {type:Date}
+});
+
+eventSchema.virtual('organiserDetail', {
+  ref:DB_USER_MODEL ,
+  localField: 'organiserId',
+  foreignField: 'id', 
+  justOne: true
 });
 
 function isSlot(this:typeof eventSchema){

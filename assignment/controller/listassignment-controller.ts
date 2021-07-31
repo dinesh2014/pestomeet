@@ -14,10 +14,21 @@ const ListassignmentController = (request: any, response: any) => {
             message("No assignment available for the event", null, false)
           );
         } else {
+          let resources = result.map((items)=>{
+            return {
+              assignmentId:items.assignmentId,
+              assignmentName:items.assignmentId ,
+              uploaderId:items.assignmentId ,
+              uploaderName:items.uploaderDetail.name,
+              eventID:items.assignmentId ,
+              assignmentLinks:items.assignmentId,
+            }
+          })
+
           response.json(
             message(
               String(result.length) + " Assignment available for the event ",
-              result,
+              resources,
               true
             )
           );
