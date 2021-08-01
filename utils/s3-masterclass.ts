@@ -16,6 +16,7 @@ const masterClassUpload = multer({
     acl: 'public-read',
     bucket: BUCKET,
     key: function (req: any, file, cb: Callback<string>) {
+      console.log(req.body)
       cb(
         null,
         MASTERCLASS_FOLDER +
