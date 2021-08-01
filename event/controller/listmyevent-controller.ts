@@ -23,6 +23,7 @@ const ListMyEventController = (request: any, response: any) => {
                 }else{
                   let events = result.map((items)=>{
                     return {
+                      eventId: items.eventId,
                       eventName: items.eventName,
                       eventType: items.eventType,
                       eventStart: items.eventStart,
@@ -32,7 +33,7 @@ const ListMyEventController = (request: any, response: any) => {
                       hasAssignment:items.hasAssignment,
                       organiserId: items.organiserId,
                       organiserName:items.organiserDetail.name,
-                      attendees:items.attendees,
+                      attendees:items.attendees
                     }
                   })
                   response.json(message("Events Reterived", events, true))
@@ -47,6 +48,7 @@ const ListMyEventController = (request: any, response: any) => {
                 }else{
                   let events = result.map((items)=>{
                     return {
+                      eventId: items.eventId,
                       eventName: items.eventName,
                       eventType: items.eventType,
                       eventStart: items.eventStart,
@@ -71,6 +73,7 @@ const ListMyEventController = (request: any, response: any) => {
                 }else{
                   let events = result.map((items)=>{
                     return {
+                      eventId: items.eventId,
                       eventName: items.eventName,
                       eventType: items.eventType,
                       eventStart: items.eventStart,
@@ -96,6 +99,7 @@ const ListMyEventController = (request: any, response: any) => {
                 }else{
                   let events = result.map((items)=>{
                     return {
+                      eventId: items.eventId,
                       eventName: items.eventName,
                       eventType: items.eventType,
                       eventStart: items.eventStart,

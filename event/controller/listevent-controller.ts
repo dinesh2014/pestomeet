@@ -14,6 +14,7 @@ const ListeventController = (request: any, response: any) => {
       } else {
         let events = result.map((items)=>{
           return {
+            eventId: items.eventId,
             eventName: items.eventName,
             eventType: items.eventType,
             eventStart: items.eventStart,
