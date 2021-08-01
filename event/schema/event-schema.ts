@@ -33,7 +33,7 @@ export const eventSchema : any = new mongoose.Schema<IEvent>({
       return this.eventType != 'slot'
     }},
     hasBooked:{ type: Boolean,default: false },
-    resourceCount:{ type: Number},
+    resourceCount:{ type: Number,default:0},
     hasAssignment:{ type: Boolean, required:function isSlot(this:typeof eventSchema){
       return this.eventType != 'slot'
     }},
