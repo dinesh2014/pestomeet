@@ -12,7 +12,7 @@ const ListMyEventController = (request: any, response: any) => {
           response.json(message("Error while reteriving user", errors, false));
         } else if (result == null) {
           response.json(
-            message("No User Found", null, false)
+            message("No User Found", null, false) 
           );
         } else if(result.role == "super admin") {
             eventDB.find({}).populate("organiserDetail").exec(function(errors: any, result: any){

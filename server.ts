@@ -30,6 +30,7 @@ import listresourceRouter from "./resource/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
 import listmyeventRouter from "./event/routes/listmyevent-route";
 import listeventRouter from "./event/routes/listevent-route";
+import editeventRouter from "./event/routes/editevent-route"
 import deleteeventRouter from "./event/routes/deleteevent-route";
 import bookeventRouter from "./event/routes/bookevent-route";
 import createassignmentRouter from "./assignment/routes/createassignment-route";
@@ -97,6 +98,7 @@ app.use("/api/pesto/resource/list", listresourceRouter);
 /*Event Routers*/
 app.use("/api/pesto/create/event", createeventRouter);
 app.use("/api/pesto/list/event", listeventRouter);
+app.use("/api/pesto/edit/event", editeventRouter);
 app.use("/api/pesto/list/myevent", listmyeventRouter);
 app.use("/api/pesto/delete/event", deleteeventRouter);
 app.use("/api/pesto/book/event", bookeventRouter);
