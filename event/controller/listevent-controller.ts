@@ -23,6 +23,7 @@ const ListeventController = (request: any, response: any) => {
             eventDescription:items.eventDescription,
             hasAssignment:items.hasAssignment,
             organiserId: items.organiserId,
+            resourceCount:items.resourceCount,
             organiserName:items.organiserDetail.name,
             attendees:items.attendees,
           }

@@ -32,6 +32,7 @@ const ListMyEventController = (request: any, response: any) => {
                       eventDescription:items.eventDescription,
                       hasAssignment:items.hasAssignment,
                       organiserId: items.organiserId,
+                      resourceCount:items.resourceCount,
                       organiserName:items.organiserDetail.name,
                       attendees:items.attendees
                     }
@@ -57,6 +58,7 @@ const ListMyEventController = (request: any, response: any) => {
                       eventDescription:items.eventDescription,
                       hasAssignment:items.hasAssignment,
                       organiserId: items.organiserId,
+                      resourceCount:items.resourceCount,
                       organiserName:items.organiserDetail.name,
                       attendees:items.attendees,
                     }
@@ -82,6 +84,7 @@ const ListMyEventController = (request: any, response: any) => {
                       eventDescription:items.eventDescription,
                       hasAssignment:items.hasAssignment,
                       organiserId: items.organiserId,
+                      resourceCount:items.resourceCount,
                       organiserName:items.organiserDetail.name,
                       attendees:items.attendees,
                     }
@@ -108,6 +111,7 @@ const ListMyEventController = (request: any, response: any) => {
                       eventDescription:items.eventDescription,
                       hasAssignment:items.hasAssignment,
                       organiserId: items.organiserId,
+                      resourceCount:items.resourceCount,
                       organiserName:items.organiserDetail.name,
                       attendees:items.attendees,
                     }
