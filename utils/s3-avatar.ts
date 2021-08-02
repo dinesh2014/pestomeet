@@ -5,6 +5,9 @@ import aws from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3, PROFILE_FOLDER } from "./app-constants";
+import { fileURLToPath } from "url";
+import { ConfigBase } from "aws-sdk/lib/config-base";
+import { config } from "dotenv";
 
 interface Callback<T> {
   (error: Error): void;
@@ -14,6 +17,8 @@ const profileImgUpload = multer({
   storage: multerS3({
     s3: S3,
     acl: 'public-read',
+    contentType:multerS3.AUTO_CONTENT_TYPE,
+    contentDisposition:'attachment',
     bucket: "pestomeet-recordings",
     key: function (req:any, file, cb: Callback<string>) {
       cb(
