@@ -3,7 +3,7 @@ import { message } from "../../utils/response-format";
 import { S3, BUCKET } from "../../utils/app-constants";
 
 const DeleteresourceController = (request: any, response: any) => {
-  const resourceId = request.body.resourceId;
+  const resourceId = request.params.resourceId;
   resourceDB.findOne(
     { resourceId: resourceId },
     (errors: any, docs: any) => {
