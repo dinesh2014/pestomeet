@@ -5,8 +5,7 @@ const ListassignmentController = (request: any, response: any) => {
   const eventID = request.params.eventID;
   assignmentDB
     .find(
-      {eventID: eventID},
-      (errors: any, result: any) => {
+      {eventID: eventID}).populate("uploaderDetail").exec((errors: any, result: any) => {
         if (errors) {
           response.json(message("Error while reteriving assignment", errors, false));
         } else if (result.length == 0) {
@@ -15,6 +14,7 @@ const ListassignmentController = (request: any, response: any) => {
           );
         } else {
           let resources = result.map((items)=>{
+            console.log(items.uploaderDetail)
             return {
               assignmentId:items.assignmentId,
               assignmentName:items.assignmentId ,
