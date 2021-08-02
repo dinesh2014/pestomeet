@@ -14,6 +14,8 @@ const masterClassUpload = multer({
   storage: multerS3({
     s3: S3,
     acl: 'public-read',
+    contentType:multerS3.AUTO_CONTENT_TYPE,
+    contentDisposition:'attachment',
     bucket: BUCKET,
     key: function (req: any, file, cb: Callback<string>) {
       console.log(req.body)

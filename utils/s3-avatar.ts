@@ -1,13 +1,9 @@
-import express from "express";
-import bodyParser from "body-parser";
 import path from "path";
 import aws from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3, PROFILE_FOLDER } from "./app-constants";
-import { fileURLToPath } from "url";
-import { ConfigBase } from "aws-sdk/lib/config-base";
-import { config } from "dotenv";
+
 
 interface Callback<T> {
   (error: Error): void;
