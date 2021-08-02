@@ -17,11 +17,11 @@ const ListassignmentController = (request: any, response: any) => {
             console.log(items.uploaderDetail)
             return {
               assignmentId:items.assignmentId,
-              assignmentName:items.assignmentId ,
-              uploaderId:items.assignmentId ,
+              assignmentName:items.assignmentName ,
+              uploaderId:items.uploaderId ,
               uploaderName:items.uploaderDetail.name,
-              eventID:items.assignmentId ,
-              assignmentLinks:items.assignmentId,
+              eventID:items.eventID ,
+              assignmentLinks:items.assignmentLinks,
             }
           })
 
