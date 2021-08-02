@@ -14,7 +14,7 @@ const profileImgUpload = multer({
     s3: S3,
     acl: 'public-read',
     contentType:multerS3.AUTO_CONTENT_TYPE,
-    contentDisposition:'attachment',
+    contentDisposition:'inline',
     bucket: "pestomeet-recordings",
     key: function (req:any, file, cb: Callback<string>) {
       cb(
