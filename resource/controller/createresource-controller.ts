@@ -59,7 +59,7 @@ const ResourceController = (request: any, response: any) => {
                         } else if (!doc) {
                           response.json(message("Couldn't Find the Event", null, false));
                         } else {
-                          response.json(message("Resource Uploaded Successfully", result, false));
+                          response.json(message("Resource Uploaded Successfully", result, true));
                         }
                       }
                       )
