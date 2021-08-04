@@ -21,4 +21,3 @@ editteamRouter.patch(
 );
 
 export default editteamRouter;
-

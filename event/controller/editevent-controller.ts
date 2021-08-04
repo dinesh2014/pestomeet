@@ -3,7 +3,17 @@ import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
 const EditEventController = (request: any, response: any) => {
-  let {eventName,eventDescription,eventType,eventStart,eventEnd,eventColor,organiserId,attendees,hasAssignment } = request.body;
+  let {
+    eventName,
+    eventDescription,
+    eventType,
+    eventStart,
+    eventEnd,
+    eventColor,
+    organiserId,
+    attendees,
+    hasAssignment,
+  } = request.body;
   let eventId = request.params.id;
   const errors = validationResult(request);
   if (!errors.isEmpty()) {
@@ -15,11 +25,11 @@ const EditEventController = (request: any, response: any) => {
     eventDescription: eventDescription,
     eventType: eventType,
     eventStart: eventStart,
-    eventEnd:eventEnd,
-    eventColor:eventColor,
-    organiserId:organiserId,
-    attendees:attendees,
-    hasAssignment:hasAssignment
+    eventEnd: eventEnd,
+    eventColor: eventColor,
+    organiserId: organiserId,
+    attendees: attendees,
+    hasAssignment: hasAssignment,
   };
   const doc = eventDB.findOneAndUpdate(
     { eventId: eventId },

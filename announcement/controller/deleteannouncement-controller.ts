@@ -3,15 +3,21 @@ import { message } from "../../utils/response-format";
 
 const DeleteannouncementController = (request: any, response: any) => {
   const announcementId = request.params.id;
-  announcementDB.findOneAndDelete({ announcementId: announcementId }, {}, (errors: any, docs: any) => {
-    if (errors) {
-      response.json(message("Error while deleting Announcenment", null, false));
-    } else if (!docs) {
-      response.json(message("Announcement Not Found", docs, false));
-    } else {
-      response.json(message("Announcement deleted successfully", docs, true));
+  announcementDB.findOneAndDelete(
+    { announcementId: announcementId },
+    {},
+    (errors: any, docs: any) => {
+      if (errors) {
+        response.json(
+          message("Error while deleting Announcenment", null, false)
+        );
+      } else if (!docs) {
+        response.json(message("Announcement Not Found", docs, false));
+      } else {
+        response.json(message("Announcement deleted successfully", docs, true));
+      }
     }
-  });
+  );
 };
 
 export default DeleteannouncementController;

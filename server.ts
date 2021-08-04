@@ -16,7 +16,7 @@ import deleteuserRouter from "./user/routes/deleteuser-route";
 import createteamRouter from "./team/routes/createteam-route";
 import editteamRouter from "./team/routes/editteam-route";
 import listteamRouter from "./team/routes/listteam-route";
-import listmyteamRouter from "./team/routes/listmyteam-route"; 
+import listmyteamRouter from "./team/routes/listmyteam-route";
 import deleteteamRouter from "./team/routes/deleteteam-route";
 import listbatchRouter from "./batch/routes/listbatch-route";
 import listmybatchRouter from "./batch/routes/listmybatch-route";
@@ -30,7 +30,7 @@ import listresourceRouter from "./resource/routes/listresource-route";
 import createeventRouter from "./event/routes/createevent-route";
 import listmyeventRouter from "./event/routes/listmyevent-route";
 import listeventRouter from "./event/routes/listevent-route";
-import editeventRouter from "./event/routes/editevent-route"
+import editeventRouter from "./event/routes/editevent-route";
 import deleteeventRouter from "./event/routes/deleteevent-route";
 import bookeventRouter from "./event/routes/bookevent-route";
 import createassignmentRouter from "./assignment/routes/createassignment-route";
@@ -45,10 +45,10 @@ import Authentication from "./utils/check-token";
 
 const app = express();
 var allowCrossDomain = {
-  Origin:'*',
-  method:['GET','PUT','POST','DELETE','PATCH'],
-  allowedHeaders:['Content-Type','Authorization']
-}
+  Origin: "*",
+  method: ["GET", "PUT", "POST", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
 
 app.use(express.json());
 app.use(cors(allowCrossDomain));
@@ -70,7 +70,7 @@ mongoose
 app.use("/api/pesto/register", registerRouter);
 app.use("/api/pesto/login", loginRouter);
 
-app.use(Authentication)
+app.use(Authentication);
 
 /*Admin Screen Routers */
 app.use("/api/pesto/list/user", listuserRouter);
@@ -121,4 +121,3 @@ app.use("/api/pesto/count/myassets", countmyassetsRouter);
 const serverListen = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started Successfully");
 });
-

@@ -7,21 +7,21 @@ interface IBatch {
   batchName: string;
   batchType: string;
   batchOwner: string;
-  batchOwnerID:string;
+  batchOwnerID: string;
   batchMembers: Array<Object>;
-  lastupdateTime: Date ;
-  createTime: Date 
+  lastupdateTime: Date;
+  createTime: Date;
 }
 
 export const batchSchema = new mongoose.Schema<IBatch>({
-  batchId: { type: String, required: true,default: () => uuidv4() },
+  batchId: { type: String, required: true, default: () => uuidv4() },
   batchName: { type: String, required: true },
   batchType: { type: String, required: true },
   batchOwner: { type: String, required: true },
   batchOwnerID: { type: String, required: true },
   batchMembers: { type: Array, required: true },
   lastupdateTime: { type: Date, default: Date.now },
-  createTime: {type:Date}
+  createTime: { type: Date },
 });
 const batchModel = mongoose.model(DB_BATCH_MODEL, batchSchema);
 export default batchModel;

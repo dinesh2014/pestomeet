@@ -2,15 +2,23 @@ import teamDB from "../schema/team-schema";
 import { message } from "../../utils/response-format";
 
 const RegisterteamController = (request: any, response: any) => {
-  const { teamName, teamType, batchOwnerID,batchId,mentorId, mentorName, teamMembers } = request.body;
+  const {
+    teamName,
+    teamType,
+    batchOwnerID,
+    batchId,
+    mentorId,
+    mentorName,
+    teamMembers,
+  } = request.body;
   let newTeam = new teamDB({
     teamName: teamName.toLowerCase(),
     teamType: teamType.toLowerCase(),
-    batchId:batchId,
+    batchId: batchId,
     mentorId: mentorId,
-    batchOwnerID:batchOwnerID,
+    batchOwnerID: batchOwnerID,
     teamMembers: teamMembers,
-    createTime: Date.now()
+    createTime: Date.now(),
   });
 
   teamDB.findOne(

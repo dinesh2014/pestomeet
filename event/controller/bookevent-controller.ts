@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
 const BookEventController = (request: any, response: any) => {
-  let {hasBooked,attendees} = request.body;
+  let { hasBooked, attendees } = request.body;
   let eventId = String(request.params.eventId);
   const errors = validationResult(request);
   if (!errors.isEmpty()) {
@@ -12,10 +12,10 @@ const BookEventController = (request: any, response: any) => {
 
   let editEvent = {
     hasBooked: hasBooked,
-    attendees:attendees
+    attendees: attendees,
   };
   const doc = eventDB.findOneAndUpdate(
-    { eventId: eventId,eventType:"slot"},
+    { eventId: eventId, eventType: "slot" },
     { $set: editEvent },
     { useFindAndModify: false, new: true },
     (errors: any, doc: any) => {

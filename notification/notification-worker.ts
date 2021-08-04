@@ -1,9 +1,9 @@
-import Appointment from "./appointment" 
+import Appointment from "./appointment";
 
-const notificationWorkerFactory = function() {
+const notificationWorkerFactory = function () {
   return {
-    run: function() {
-      Appointment(); 
+    run: function () {
+      Appointment();
     },
   };
 };

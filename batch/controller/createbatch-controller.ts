@@ -1,16 +1,16 @@
 import batchDB from "../schema/batch-schema";
 import { message } from "../../utils/response-format";
 
-
 const CreatebatchController = (reqest: any, response: any) => {
-  const { batchName, batchType, batchOwnerID,batchOwner, batchMembers } = reqest.body;
+  const { batchName, batchType, batchOwnerID, batchOwner, batchMembers } =
+    reqest.body;
   const newBatch = new batchDB({
     batchName: batchName.toLowerCase(),
     batchType: batchType,
     batchOwner: batchOwner,
-    batchOwnerID:batchOwnerID,
+    batchOwnerID: batchOwnerID,
     batchMembers: batchMembers,
-    createTime: Date.now()
+    createTime: Date.now(),
   });
 
   batchDB.findOne(

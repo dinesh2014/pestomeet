@@ -14,22 +14,17 @@ const ResourceController = (request: any, response: any) => {
       } else {
         const resource = request.file.location;
         const resourceKey = request.file.key;
-        const {
-          resourceName,
-          uploaderId,
-          eventId,
-          resourceLinks,
-          eventType,
-        } = request.body;
+        const { resourceName, uploaderId, eventId, resourceLinks, eventType } =
+          request.body;
         const newBatch = new resourceDB({
           resourceName: resourceName.toLowerCase(),
           uploaderId: uploaderId,
           eventId: eventId,
-          resourceLinks:resourceLinks,
+          resourceLinks: resourceLinks,
           eventType: eventType.toLowerCase(),
           resourceKey: resourceKey,
           resource: resource,
-          createTime: Date.now()
+          createTime: Date.now(),
         });
         resourceDB.findOne(
           { resourceKey: resourceKey },
@@ -48,23 +43,37 @@ const ResourceController = (request: any, response: any) => {
                   response.json({ message: error });
                 } else {
                   Promise.all([
-                    resourceDB.countDocuments({eventId:eventId}),
-                  ]).then( ([resourceCount]) => {
-                     eventDB.findOneAndUpdate( { eventId:eventId },
-                      { $set: {resourceCount:resourceCount} },
+                    resourceDB.countDocuments({ eventId: eventId }),
+                  ]).then(([resourceCount]) => {
+                    eventDB.findOneAndUpdate(
+                      { eventId: eventId },
+                      { $set: { resourceCount: resourceCount } },
                       { useFindAndModify: false, new: true },
                       (errors: any, doc: any) => {
                         if (errors) {
-                          response.json(message("Update Failed ! Please Try Again", null, false));
+                          response.json(
+                            message(
+                              "Update Failed ! Please Try Again",
+                              null,
+                              false
+                            )
+                          );
                         } else if (!doc) {
-                          response.json(message("Couldn't Find the Event", null, false));
+                          response.json(
+                            message("Couldn't Find the Event", null, false)
+                          );
                         } else {
-                          response.json(message("Resource Uploaded Successfully", result, true));
+                          response.json(
+                            message(
+                              "Resource Uploaded Successfully",
+                              result,
+                              true
+                            )
+                          );
                         }
                       }
-                      )
-                    }
-                  );
+                    );
+                  });
                 }
               });
             } else {

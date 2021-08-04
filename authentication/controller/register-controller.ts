@@ -20,7 +20,7 @@ const RegisterController = (reqest: any, response: any) => {
     role: role.toLowerCase(),
     experience: experience,
     approval: approval.toLowerCase(),
-    createTime: Date.now()
+    createTime: Date.now(),
   });
 
   userDB.findOne(

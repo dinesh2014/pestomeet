@@ -2,18 +2,23 @@ import assignmentDB from "../schema/assignment-schema";
 import { message } from "../../utils/response-format";
 
 const RegisterteamController = (request: any, response: any) => {
-  const { assignmentName, uploaderId,eventID,eventType,assignmentLinks} = request.body;
+  const { assignmentName, uploaderId, eventID, eventType, assignmentLinks } =
+    request.body;
   let newAssignment = new assignmentDB({
     assignmentName: assignmentName.toLowerCase(),
     uploaderId: uploaderId,
     eventID: eventID,
-    eventType:eventType,
-    assignmentLinks:assignmentLinks,
-    createTime: Date.now()
+    eventType: eventType,
+    assignmentLinks: assignmentLinks,
+    createTime: Date.now(),
   });
 
   assignmentDB.findOne(
-    { assignmentName: assignmentName.toLowerCase(),uploaderId:uploaderId ,eventID:eventID },
+    {
+      assignmentName: assignmentName.toLowerCase(),
+      uploaderId: uploaderId,
+      eventID: eventID,
+    },
     (error: any, result: any) => {
       if (error) {
         response.json(
@@ -28,7 +33,9 @@ const RegisterteamController = (request: any, response: any) => {
           if (error) {
             response.json({ message: error });
           } else {
-            response.json(message("Assignment Submitted Successfully", null, true));
+            response.json(
+              message("Assignment Submitted Successfully", null, true)
+            );
           }
         });
       } else {

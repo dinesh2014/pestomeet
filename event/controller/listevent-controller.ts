@@ -3,8 +3,10 @@ import { message } from "../../utils/response-format";
 
 const ListeventController = (request: any, response: any) => {
   const eventType = request.params.type;
-  eventDB.find(
-    { eventType: eventType.toLowerCase() }).populate("organiserDetail").exec((errors: any, result: any) => {
+  eventDB
+    .find({ eventType: eventType.toLowerCase() })
+    .populate("organiserDetail")
+    .exec((errors: any, result: any) => {
       if (errors) {
         response.json(message("Error while reteriving event", errors, false));
       } else if (result.length == 0) {
@@ -12,12 +14,12 @@ const ListeventController = (request: any, response: any) => {
           message("No " + String(eventType) + " Event found", null, false)
         );
       } else {
-        let events = result.map((items)=>{
+        let events = result.map((items) => {
           let organiserName;
-          if(items.organiserDetail !== null){
-            organiserName = items.organiserDetail.name
-          }else{
-            organiserName = "User Deleted"
+          if (items.organiserDetail !== null) {
+            organiserName = items.organiserDetail.name;
+          } else {
+            organiserName = "User Deleted";
           }
           return {
             eventId: items.eventId,
@@ -25,15 +27,15 @@ const ListeventController = (request: any, response: any) => {
             eventType: items.eventType,
             eventStart: items.eventStart,
             eventEnd: items.eventEnd,
-            eventColor:items.eventColor,
-            eventDescription:items.eventDescription,
-            hasAssignment:items.hasAssignment,
+            eventColor: items.eventColor,
+            eventDescription: items.eventDescription,
+            hasAssignment: items.hasAssignment,
             organiserId: items.organiserId,
-            resourceCount:items.resourceCount,
-            organiserName:organiserName,
-            attendees:items.attendees,
-          }
-        })
+            resourceCount: items.resourceCount,
+            organiserName: organiserName,
+            attendees: items.attendees,
+          };
+        });
         response.json(
           message(
             String(result.length) + " " + String(eventType) + " Event Found",
@@ -42,8 +44,7 @@ const ListeventController = (request: any, response: any) => {
           )
         );
       }
-    }
-  );
+    });
 };
 
 export default ListeventController;

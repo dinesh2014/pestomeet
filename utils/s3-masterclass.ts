@@ -14,12 +14,12 @@ interface Callback<T> {
 const masterClassUpload = multer({
   storage: multerS3({
     s3: S3,
-    acl: 'public-read',
-    contentType:multerS3.AUTO_CONTENT_TYPE,
-    contentDisposition:'inline',
+    acl: "public-read",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    contentDisposition: "inline",
     bucket: BUCKET,
     key: function (req: any, file, cb: Callback<string>) {
-      console.log(req.body)
+      console.log(req.body);
       cb(
         null,
         MASTERCLASS_FOLDER +
@@ -28,8 +28,7 @@ const masterClassUpload = multer({
           "_" +
           req.body.uploaderId +
           "_" +
-          req.body.eventId
-           +
+          req.body.eventId +
           path.extname(file.originalname)
       );
     },

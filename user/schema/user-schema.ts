@@ -13,11 +13,11 @@ interface IUser {
   experience: Number;
   approval: String;
   lastupdateTime: { type: Date };
-  createTime: Date
+  createTime: Date;
 }
 
 const userSchema = new mongoose.Schema<IUser>({
-  id: { type: String, required: true,default: () => uuidv4()},
+  id: { type: String, required: true, default: () => uuidv4() },
   name: { type: String, required: true },
   avatar: { type: String },
   email: { type: String, required: true },
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema<IUser>({
   experience: { type: String, required: true },
   approval: { type: String, required: true },
   lastupdateTime: { type: Date, default: Date.now },
-  createTime: {type:Date}
+  createTime: { type: Date },
 });
 
 const userModel = mongoose.model(DB_USER_MODEL, userSchema);

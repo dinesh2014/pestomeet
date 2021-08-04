@@ -4,7 +4,6 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3, PROFILE_FOLDER } from "./app-constants";
 
-
 interface Callback<T> {
   (error: Error): void;
   (error: null, value: T): void;
@@ -12,18 +11,15 @@ interface Callback<T> {
 const profileImgUpload = multer({
   storage: multerS3({
     s3: S3,
-    acl: 'public-read',
-    contentType:multerS3.AUTO_CONTENT_TYPE,
-    contentDisposition:'inline',
+    acl: "public-read",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    contentDisposition: "inline",
     bucket: "pestomeet-recordings",
-    key: function (req:any, file, cb: Callback<string>) {
+    key: function (req: any, file, cb: Callback<string>) {
       cb(
         null,
-        PROFILE_FOLDER +
-          "/" +
-          req.params.id+
-          path.extname(file.originalname)
-            );
+        PROFILE_FOLDER + "/" + req.params.id + path.extname(file.originalname)
+      );
     },
   }),
   limits: { fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
