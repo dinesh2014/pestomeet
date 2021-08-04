@@ -27,7 +27,7 @@ describe('Login Route Testing', function() {
                 done();
                 }
             });
-        });
+        }).timeout(5000);;
         
     it('should send wrong username/password error', function(done) {
         chai.request(host).post('/api/pesto/login')

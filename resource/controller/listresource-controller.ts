@@ -15,13 +15,24 @@ const ListresourceController = (request: any, response: any) => {
           );
         } else {
           let resources = result.map((items)=>{
+            let eventName,uploaderName;
+            if(items.uploaderDetail !== null){
+              uploaderName = items.uploaderDetail.name
+            }else{
+              uploaderName = "User Deleted"
+            }
+            if(items.eventDetail !== null){
+              eventName = items.eventDetail.eventName
+            }else{
+              eventName = "User Deleted"
+            }
             return {
               resourceLinks: items.resourceLinks,
               resourceName: items.resourceName,
               uploaderId:items.uploaderId,
-              uploaderName:items.uploaderDetail.name,
+              uploaderName:uploaderName,
               eventId: items.eventId,
-              eventName:items.eventDetail.eventName,
+              eventName:eventName,
               resourceKey: items.resourceKey,
               resource: items.resource,
               resourceId: items.resourceId
