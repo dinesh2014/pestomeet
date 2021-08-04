@@ -15,11 +15,17 @@ const ListassignmentController = (request: any, response: any) => {
         } else {
           let resources = result.map((items)=>{
             console.log(items.uploaderDetail)
+            let uploaderName;
+          if(items.uploaderDetail !== null){
+            uploaderName = items.uploaderDetail.name
+          }else{
+            uploaderName = "User Deleted"
+          }
             return {
               assignmentId:items.assignmentId,
               assignmentName:items.assignmentName ,
               uploaderId:items.uploaderId ,
-              uploaderName:items.uploaderDetail.name,
+              uploaderName:uploaderName,
               eventID:items.eventID ,
               assignmentLinks:items.assignmentLinks,
             }
