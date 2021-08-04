@@ -13,17 +13,24 @@ const ListteamController = (request: any, response: any) => {
         );
       } else {
         let adminTeam = result.map((items)=>{
-          let batchName,batchOwner 
-          if(items.batchDetail.batchName){
+          console.log(items)
+          let batchName,batchOwner,mentorName
+          if(items.batchDetail !== null){
             batchName = items.batchDetail.batchName
           }else{
-            batchName = "Invalid Batch"
+            batchName = "Batch Deleted"
           }
 
-          if(items.batchDetail.batchOwner){
+          if(items.batchDetail !== null){
             batchOwner = items.batchDetail.batchOwner
           }else{
-            batchOwner = "Invalid Batch"
+            batchOwner = "Batch Deleted"
+          }
+
+          if(items.mentorDetail !== null){
+            mentorName = items.mentorDetail.name
+          }else{
+            mentorName = "Mentor Deleted"
           }
           return {
             teamId: items.teamId ,
@@ -34,7 +41,7 @@ const ListteamController = (request: any, response: any) => {
             batchOwner:batchOwner,
             batchOwnerID:items.batchOwnerID,
             mentorId:items.mentorId,
-            mentorName:items.mentorDetail.name,
+            mentorName:mentorName,
             teamMembers:items.teamMembers}
         })
 

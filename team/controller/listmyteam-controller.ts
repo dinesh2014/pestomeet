@@ -27,20 +27,38 @@ const ListMyTeamController = (request: any, response: any) => {
                   response.json(message("No Team Found", null, false))
                 }else{
                   let adminTeam = result.map((items)=>{
+                    let batchName,batchOwner,mentorName
+                    if(items.batchDetail !== null){
+                      batchName = items.batchDetail.batchName
+                    }else{
+                      batchName = "Batch Deleted"
+                    }
+          
+                    if(items.batchDetail !== null){
+                      batchOwner = items.batchDetail.batchOwner
+                    }else{
+                      batchOwner = "Batch Deleted"
+                    }
+          
+                    if(items.mentorDetail !== null){
+                      mentorName = items.mentorDetail.name
+                    }else{
+                      mentorName = "Mentor Deleted"
+                    }
                     return {
                       teamId: items.teamId ,
                       teamName:items.teamName ,
                       teamType:items.teamType ,
                       batchId: items.batchId ,
-                      batchName:items.batchDetail.batchName,
-                      batchOwner:items.batchDetail.batchOwner,
+                      batchName:batchName,
+                      batchOwner:batchOwner,
                       batchOwnerID:items.batchOwnerID,
                       mentorId:items.mentorId,
-                      mentorName:items.mentorDetail.name,
+                      mentorName:mentorName,
                       teamMembers:items.teamMembers}
                   })
           
-                    response.json(message("Team Reterived for Super Admin", adminTeam, true))
+                    response.json(message("Teams Found", adminTeam, true))
                 }
             })
         }else if (result.role == "admin"){
@@ -58,24 +76,41 @@ const ListMyTeamController = (request: any, response: any) => {
                         if (errors) {
                           response.json(message("Error while reteriving Batch", errors, false));
                         } else if (result.length == 0) {
-                          response.json(message("No Batch Found", null, false))
+                          response.json(message("No Team Found", null, false))
                         }else{
                           let adminTeam = result.map((items)=>{
+                            let batchName,batchOwner,mentorName
+                            if(items.batchDetail !== null){
+                              batchName = items.batchDetail.batchName
+                            }else{
+                              batchName = "Batch Deleted"
+                            }
+                  
+                            if(items.batchDetail !== null){
+                              batchOwner = items.batchDetail.batchOwner
+                            }else{
+                              batchOwner = "Batch Deleted"
+                            }
+                  
+                            if(items.mentorDetail !== null){
+                              mentorName = items.mentorDetail.name
+                            }else{
+                              mentorName = "Mentor Deleted"
+                            }
                             return {
                               teamId: items.teamId ,
                               teamName:items.teamName ,
                               teamType:items.teamType ,
                               batchId: items.batchId ,
-                              batchName:items.batchDetail.batchName,
-                              batchOwner:items.batchDetail.batchOwner,
+                              batchName:batchName,
+                              batchOwner:batchOwner,
                               batchOwnerID:items.batchOwnerID,
                               mentorId:items.mentorId,
-                              mentorName:items.mentorDetail.name,
+                              mentorName:mentorName,
                               teamMembers:items.teamMembers}
                           })
                   
-
-                          response.json(message("Team Found",adminTeam, false))
+                          response.json(message("Teams Found",adminTeam, false))
                         }
                     })
                 }
@@ -83,25 +118,43 @@ const ListMyTeamController = (request: any, response: any) => {
         }else if (result.role == "mentor"){
             teamDB.find({mentorId:userID}).populate("batchDetail").populate("mentorDetail").exec((errors: any, result: any) => {
                 if (errors) {
-                  response.json(message("Error while reteriving Batch", errors, false));
+                  response.json(message("Error while reteriving Team", errors, false));
                 } else if (result.length == 0) {
-                  response.json(message("No Batch Found", null, false))
+                  response.json(message("No Team Found", null, false))
                 }else{
                   let adminTeam = result.map((items)=>{
+                    let batchName,batchOwner,mentorName
+                    if(items.batchDetail !== null){
+                      batchName = items.batchDetail.batchName
+                    }else{
+                      batchName = "Batch Deleted"
+                    }
+          
+                    if(items.batchDetail !== null){
+                      batchOwner = items.batchDetail.batchOwner
+                    }else{
+                      batchOwner = "Batch Deleted"
+                    }
+          
+                    if(items.mentorDetail !== null){
+                      mentorName = items.mentorDetail.name
+                    }else{
+                      mentorName = "Mentor Deleted"
+                    }
                     return {
                       teamId: items.teamId ,
                       teamName:items.teamName ,
                       teamType:items.teamType ,
                       batchId: items.batchId ,
-                      batchName:items.batchDetail.batchName,
-                      batchOwner:items.batchDetail.batchOwner,
+                      batchName:batchName,
+                      batchOwner:batchOwner,
                       batchOwnerID:items.batchOwnerID,
                       mentorId:items.mentorId,
-                      mentorName:items.mentorDetail.name,
+                      mentorName:mentorName,
                       teamMembers:items.teamMembers}
                   })
-          
-                    response.json(message("Batches Reterived", adminTeam, true))
+                    
+                    response.json(message("Teams Found", adminTeam, true))
                 }
             });
         }else{
