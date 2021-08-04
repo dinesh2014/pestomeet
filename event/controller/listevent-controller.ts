@@ -13,6 +13,12 @@ const ListeventController = (request: any, response: any) => {
         );
       } else {
         let events = result.map((items)=>{
+          let organiserName;
+          if(items.organiserDetail !== null){
+            organiserName = items.organiserDetail.name
+          }else{
+            organiserName = "User Deleted"
+          }
           return {
             eventId: items.eventId,
             eventName: items.eventName,
@@ -24,7 +30,7 @@ const ListeventController = (request: any, response: any) => {
             hasAssignment:items.hasAssignment,
             organiserId: items.organiserId,
             resourceCount:items.resourceCount,
-            organiserName:items.organiserDetail.name,
+            organiserName:organiserName,
             attendees:items.attendees,
           }
         })
