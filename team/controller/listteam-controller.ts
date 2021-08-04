@@ -13,13 +13,25 @@ const ListteamController = (request: any, response: any) => {
         );
       } else {
         let adminTeam = result.map((items)=>{
+          let batchName,batchOwner 
+          if(items.batchDetail.batchName){
+            batchName = items.batchDetail.batchName
+          }else{
+            batchName = "Invalid Batch"
+          }
+
+          if(items.batchDetail.batchOwner){
+            batchOwner = items.batchDetail.batchOwner
+          }else{
+            batchOwner = "Invalid Batch"
+          }
           return {
             teamId: items.teamId ,
             teamName:items.teamName ,
             teamType:items.teamType ,
             batchId: items.batchId ,
-            batchName:items.batchDetail.batchName,
-            batchOwner:items.batchDetail.batchOwner,
+            batchName:batchName,
+            batchOwner:batchOwner,
             batchOwnerID:items.batchOwnerID,
             mentorId:items.mentorId,
             mentorName:items.mentorDetail.name,
