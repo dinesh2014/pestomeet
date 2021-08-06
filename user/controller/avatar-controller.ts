@@ -2,6 +2,8 @@ import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 import profileImgUpload from "../../utils/s3-avatar";
 
+/* This module is responsible for uploading users profile pictures details to MongoDB*/
+
 const AvatarController = (request: any, response: any) => {
   const id = request.params.id;
 

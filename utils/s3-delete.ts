@@ -6,6 +6,8 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3, BUCKET } from "./app-constants";
 
+/* This module is responsible for deleteing uploaded video from AWS S3 */
+
 interface Callback<T> {
   (error: Error): void;
   (error: null, value: T): void;

@@ -2,6 +2,9 @@ import eventDB from "../schema/event-schema";
 import { message } from "../../utils/response-format";
 import { truncate } from "node:fs/promises";
 
+/* This module is responsible for creating events for the particular date time and invite users for that
+particular event*/
+
 const EventController = (request: any, response: any) => {
   const {
     eventName,

@@ -1,6 +1,8 @@
 import assignmentDB from "../schema/assignment-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for deleting tassignments from the system */
+
 const DeleteassignmentController = (request: any, response: any) => {
   const assignmentId = request.params.id;
   assignmentDB.findOneAndDelete(

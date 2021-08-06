@@ -1,6 +1,8 @@
 import eventDB from "../schema/event-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for deleting events from the syatem that are already scheduled */
+
 const DeleteeventController = (request: any, response: any) => {
   const id = request.params.id;
   eventDB.findOneAndDelete({ eventId: id }, {}, (errors: any, docs: any) => {

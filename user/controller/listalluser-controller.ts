@@ -1,6 +1,9 @@
 import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for editing users details, from which you can change
+name,email,phone,role,experience and approval status*/
+
 const ListalluserController = (request: any, response: any) => {
   userDB
     .find({}, (errors: any, result: any) => {

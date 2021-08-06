@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for handling registration functionaloty of the application*/
+
 const RegisterController = (reqest: any, response: any) => {
   const { name, email, phone, password, role, experience, approval } =
     reqest.body;

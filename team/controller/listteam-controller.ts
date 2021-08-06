@@ -1,6 +1,8 @@
 import teamDB from "../schema/team-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing team based on team type*/
+
 const ListteamController = (request: any, response: any) => {
   const teamType = request.params.type;
   teamDB

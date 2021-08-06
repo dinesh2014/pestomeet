@@ -3,6 +3,9 @@ import eventDB from "../../event/schema/event-schema";
 import { message } from "../../utils/response-format";
 import masterClassUpload from "../../utils/s3-masterclass";
 
+/* This module is responsible for creating entry for the uploaded resources in AWS S3
+in fron-end*/
+
 const ResourceController = (request: any, response: any) => {
   masterClassUpload(request, response, (error) => {
     if (error) {

@@ -1,6 +1,8 @@
 import batchDB from "../schema/batch-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for deleting batch from the system */
+
 const DeleteteamController = (request: any, response: any) => {
   const id = request.params.id;
   batchDB.findOneAndDelete({ batchId: id }, {}, (errors: any, docs: any) => {

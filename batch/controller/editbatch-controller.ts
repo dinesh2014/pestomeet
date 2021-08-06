@@ -2,6 +2,9 @@ import batchDB from "../schema/batch-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for editing batches from the system based on the
+changed values submitted through front-end*/
+
 const ApprovalController = (request: any, response: any) => {
   const { batchName, batchType, batchOwner, batchMembers } = request.body;
   const batchId = request.params.id;

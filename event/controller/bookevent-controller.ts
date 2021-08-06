@@ -2,6 +2,8 @@ import eventDB from "../schema/event-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for booking slots opened by the mentor*/
+
 const BookEventController = (request: any, response: any) => {
   let { hasBooked, attendees } = request.body;
   let eventId = String(request.params.eventId);

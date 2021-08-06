@@ -1,6 +1,9 @@
 import assignmentDB from "../schema/assignment-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for creating assignments from the system based on the
+values submitted through front-end*/
+
 const RegisterteamController = (request: any, response: any) => {
   const { assignmentName, uploaderId, eventID, eventType, assignmentLinks } =
     request.body;

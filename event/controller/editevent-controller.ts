@@ -2,6 +2,9 @@ import eventDB from "../schema/event-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for editing events from the system based on the
+changed values submitted through front-end*/
+
 const EditEventController = (request: any, response: any) => {
   let {
     eventName,

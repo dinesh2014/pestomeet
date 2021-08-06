@@ -1,6 +1,10 @@
 import batchDB from "../schema/batch-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for creating batch based on the details entered
+in fron-end*/
+
+
 const CreatebatchController = (reqest: any, response: any) => {
   const { batchName, batchType, batchOwnerID, batchOwner, batchMembers } =
     reqest.body;

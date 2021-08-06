@@ -3,6 +3,10 @@ import batchDB from "../../batch/schema/batch-schema";
 import teamDB from "../../team/schema/team-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing associated users for the given userID, 
+ for example: students available in admin's batch , student's availabel in mentor's
+ team ... etc*/
+
 const ListuserController = (request: any, response: any) => {
   const userID = request.params.userID;
   userDB.findOne({ id: userID }, (errors: any, result: any) => {

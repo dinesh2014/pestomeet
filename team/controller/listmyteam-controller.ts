@@ -4,8 +4,9 @@ import teamDB from "../../team/schema/team-schema";
 import { message } from "../../utils/response-format";
 import _ from "lodash";
 
-/* This module serves as the controller for the API "api/pesto/list/mybatch/" which get userID
-as a params and list batches based on userrole */
+/* This module is responsible for listing associated the for the given userID, 
+ for example: teams available in admin's batch , team availabe under mentor's
+ ... etc*/
 
 const ListMyTeamController = (request: any, response: any) => {
   const userID = request.params.userID;

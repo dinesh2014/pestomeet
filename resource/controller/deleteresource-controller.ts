@@ -3,6 +3,9 @@ import eventDB from "../../event/schema/event-schema";
 import { message } from "../../utils/response-format";
 import { S3, BUCKET } from "../../utils/app-constants";
 
+/* This module is responsible for deleting the uploaded resource in AWS S3 and its 
+asscoiated entry in mongoDB */
+
 const DeleteresourceController = (request: any, response: any) => {
   const resourceId = request.params.resourceId;
   resourceDB.findOne({ resourceId: resourceId }, (errors: any, docs: any) => {

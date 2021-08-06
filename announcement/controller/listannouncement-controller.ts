@@ -1,6 +1,8 @@
 import announcementDB from "../schema/announcement-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing announcements */
+
 const ListannouncementController = (request: any, response: any) => {
   announcementDB.find({}, (errors: any, result: any) => {
     if (errors) {

@@ -2,6 +2,8 @@ import express from "express";
 import { body, check } from "express-validator";
 import editController from "../controller/edituser-controller";
 
+/* This module is a route handler for API /api/pesto/edit/user/:id */
+
 const edituserRouter = express.Router();
 
 console.log("in router");

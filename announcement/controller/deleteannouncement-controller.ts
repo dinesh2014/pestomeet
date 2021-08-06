@@ -1,6 +1,8 @@
 import announcementDB from "../schema/announcement-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for deleting team from the system */
+
 const DeleteannouncementController = (request: any, response: any) => {
   const announcementId = request.params.id;
   announcementDB.findOneAndDelete(

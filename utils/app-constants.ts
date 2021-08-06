@@ -2,6 +2,9 @@ import aws from "aws-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
+/* This module contain constant declaration which is used througout the application */
+
+
 export const DB_USER_MODEL = "userModel";
 export const DB_BATCH_MODEL = "batchModel";
 export const DB_TEAM_MODEL = "teamModel";

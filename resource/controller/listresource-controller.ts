@@ -1,6 +1,8 @@
 import resourceDB from "../schema/resource-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing resources based on eventID*/
+
 const ListresourceController = (request: any, response: any) => {
   const eventId = request.params.eventId;
   resourceDB

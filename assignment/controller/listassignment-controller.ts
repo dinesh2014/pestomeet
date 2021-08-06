@@ -1,6 +1,8 @@
 import assignmentDB from "../schema/assignment-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing assignments based on events*/
+
 const ListassignmentController = (request: any, response: any) => {
   const eventID = request.params.eventID;
   assignmentDB

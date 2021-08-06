@@ -2,6 +2,8 @@ import express from "express";
 import { body, check } from "express-validator";
 import registerController from "../controller/register-controller";
 
+/* This module is a route handler for API /api/pesto/register */
+
 const registerRouter = express.Router();
 
 registerRouter.post(

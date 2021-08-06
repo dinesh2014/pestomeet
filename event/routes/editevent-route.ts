@@ -2,6 +2,8 @@ import express from "express";
 import { body, check } from "express-validator";
 import editeventController from "../controller/editevent-controller";
 
+/* This module is a route handler for API /api/pesto/delete/event */
+
 const editteamRouter = express.Router();
 
 console.log("in router");

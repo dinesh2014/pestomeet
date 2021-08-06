@@ -7,6 +7,8 @@ import multerS3 from "multer-s3";
 import { S3, BUCKET, MASTERCLASS_FOLDER } from "./app-constants";
 import { fileURLToPath } from "url";
 
+/* This module is responsible for uploading recorded videos to AWS S3 */
+
 interface Callback<T> {
   (error: Error): void;
   (error: null, value: T): void;

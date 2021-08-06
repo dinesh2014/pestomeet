@@ -1,12 +1,9 @@
-/* This is the entry point of the back-end where Database Connection, Server Establishment,
- API Route Path  and Authentication middleware are configured */
-
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-//import scheduler from './notification/scheduler';
+import scheduler from './notification/scheduler';
 import registerRouter from "./authentication/routes/register-route";
 import loginRouter from "./authentication/routes/login-route";
 import edituserRouter from "./user/routes/edituser-route";
@@ -42,6 +39,10 @@ import deleteannouncementRouter from "./announcement/routes/deleteannouncement-r
 import listStudents from "./user/routes/liststudents-route";
 import countmyassetsRouter from "./user/routes/countmyassets-route";
 import Authentication from "./utils/check-token";
+
+/* This is the entry point of the back-end where Database Connection, Server Establishment,
+ API Route Path  and Authentication middleware are configured */
+
 
 const app = express();
 var allowCrossDomain = {
@@ -116,7 +117,7 @@ app.use("/api/pesto/delete/announcement", deleteannouncementRouter);
 /* Count Routers */
 app.use("/api/pesto/count/myassets", countmyassetsRouter);
 
-//scheduler.start();
+scheduler.start();
 
 const serverListen = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started Successfully");

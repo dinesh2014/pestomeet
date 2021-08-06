@@ -2,6 +2,9 @@ import teamDB from "../schema/team-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for editing team from the system based on the
+changed values submitted through front-end*/
+
 const ApprovalController = (request: any, response: any) => {
   let { teamName, teamType, mentorId, mentorName, teamMembers } = request.body;
   let teamId = request.params.id;

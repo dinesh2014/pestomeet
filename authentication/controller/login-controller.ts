@@ -3,6 +3,8 @@ import jwt, { Secret } from "jsonwebtoken";
 import userDB from "../../user/schema/user-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for handling login functionality of the application*/
+
 const LoginController = (request: any, response: any) => {
   const { email, phone, password } = request.body;
   userDB.findOne(

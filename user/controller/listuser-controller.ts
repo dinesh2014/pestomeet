@@ -1,6 +1,8 @@
 import userDB from "../schema/user-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing users based on role and approval status*/
+
 const ListuserController = (request: any, response: any) => {
   const status = request.params.status;
   const role = request.params.role;

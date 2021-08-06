@@ -2,6 +2,10 @@ import eventDB from "../schema/event-schema";
 import userDB from "../../user/schema/user-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing associated events the for the given userID, 
+ for example: master class events associated scheduled by mentor , daily / weekly meeting
+ scheduled by mentor ... etc*/
+
 const ListMyEventController = (request: any, response: any) => {
   const userID = request.params.userID;
   userDB.findOne({ id: userID }, (errors: any, result: any) => {

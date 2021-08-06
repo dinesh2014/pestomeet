@@ -1,6 +1,9 @@
 import batchDB from "../schema/batch-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing batch from the system based on the
+batch type*/
+
 const ListbatchController = (request: any, response: any) => {
   const batchType = request.params.type;
   batchDB.find({ batchType: batchType }, (errors: any, result: any) => {

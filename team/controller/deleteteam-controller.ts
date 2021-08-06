@@ -1,6 +1,8 @@
 import teamDB from "../schema/team-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for deleting team from the system */
+
 const DeleteteamController = (request: any, response: any) => {
   const id = request.params.id;
   teamDB.findOneAndDelete({ teamId: id }, {}, (errors: any, docs: any) => {

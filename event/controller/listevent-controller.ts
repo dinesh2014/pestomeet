@@ -1,6 +1,8 @@
 import eventDB from "../schema/event-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for listing team based on team type*/
+
 const ListeventController = (request: any, response: any) => {
   const eventType = request.params.type;
   eventDB

@@ -11,6 +11,8 @@ import {
 } from "../utils/app-constants";
 import twilio from "twilio";
 
+/* This module is responsible for utilizing twilio for sending notifications*/
+
 const requireNotification = (appointment: any) => {
   const searchDate = moment(new Date())
     .tz(

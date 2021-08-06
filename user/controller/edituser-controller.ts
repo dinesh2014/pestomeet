@@ -2,6 +2,8 @@ import userDB from "../schema/user-schema";
 import { validationResult } from "express-validator";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible for deleting register user from the system*/
+
 const ApprovalController = (request: any, response: any) => {
   let { name, email, phone, role, experience, approval } = request.body;
   let id = String(request.params.id);

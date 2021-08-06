@@ -3,6 +3,9 @@ dotenv.config();
 import jwt, { Secret } from "jsonwebtoken";
 import { message } from "./response-format";
 
+/* This is the middleware module which will act as a API gateway responsible for route protection*/
+
+
 function CheckToken(req: any, res: any, next: any) {
   try {
     const token = req.headers["authorization"];

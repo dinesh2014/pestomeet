@@ -3,6 +3,9 @@ import batchDB from "../../batch/schema/batch-schema";
 import teamDB from "../../team/schema/team-schema";
 import { message } from "../../utils/response-format";
 
+/* This module is responsible providing various counts based on user profile which will be displayed 
+on users landing page*/
+
 const CountMyAssetsController = (request: any, response: any) => {
   const userID = request.params.userID;
   userDB.findOne({ id: userID }, (errors: any, result: any) => {
